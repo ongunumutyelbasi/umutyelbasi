@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { projects, getSlug } from '../../data/projects';
 import { ArrowLeft } from '@lucide/astro';
+const base = import.meta.env.BASE_URL;
 
 // Tell Astro which paths to generate
 export async function getStaticPaths() {

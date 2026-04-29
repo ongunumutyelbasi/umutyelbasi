@@ -12,7 +12,7 @@ export const projects = [
             <p>This was my first time in a while working on a major production, and it reminded me how much I’ve missed being behind the desk for live shows. Grateful for the chance to be part of it, and I'll definitely be back next year.</p>
         `,
         category: ["Live Sound"],
-		image: "/images/mjf2025.png",
+		image: "/umutyelbasi/images/mjf2025.png",
 		link: "/projects/manchester-jazz-festival-2025",
         dates: "May 2025",
         client: "Manchester Jazz Festival"
