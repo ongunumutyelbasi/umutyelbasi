@@ -419,4 +419,29 @@ export const projects = [
         dates: "January-April 2023",
         client: "Cannabis Museum Amsterdam"
 	},
+    {
+		title: "Uskudar American Academy 2022 Talent Show - Front of House Mix",
+		desc: "I returned to my alma mater to lead the live sound mixing for a complex, multi-ensemble concert, overseeing stage setup and sound reinforcement for a diverse range of performers.",
+        longDesc: `
+            <p>I was responsible for setting up sound equipment including microphones and monitor speakers for a concert consisting of multiple large bands, a choir, solo artists and non-musician performers.</p>
+            <p>Due to the nature of the venue (the school auditorium), some microphones and the subwoofer had to be reconnected to the desk, which I also did. This was relatively easy as I had helped with the setup of the auditorium when the sound system was renovated in 2018.</p>
+            <p>Below is my post on LinkedIn about the event:</p>
+            <div style="width: 100%; display: flex; justify-content: center;">
+                <iframe 
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:7014718684451471360" 
+                    height="1000" 
+                    width="100%" 
+                    frameborder="0" 
+                    allowfullscreen="" 
+                    title="Embedded post"
+                    style="max-width: 504px; border: 1px solid #e2e8f0; border-radius: 8px;"
+                ></iframe>
+            </div>
+        `,
+		category: ["Live Sound"],
+		image: "/umutyelbasi/images/projects/uaa_piano.jpeg",
+		link: "#",
+        dates: "December 2022",
+        client: "Uskudar American Academy, İstanbul"
+	},
 ];
