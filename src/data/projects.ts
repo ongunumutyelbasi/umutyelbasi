@@ -444,4 +444,20 @@ export const projects = [
         dates: "December 2022",
         client: "Uskudar American Academy, İstanbul"
 	},
+    {
+		title: "Step Ladder Records 4-Band Special (Modern Jazz, Funk & Fusion) - Recording, Mix & Master",
+		desc: "I recorded multitrack live performances for four bands at The Old Abbey Taphouse and performed full mixing and mastering for Step Ladder Records.",
+        longDesc: `
+            <p>I was tasked with recording sets played by four bands: Connor Lynn Quartet, Pink Familee, Plantfood, and Paltin.</p>
+            <p>I recorded multitracks on Logic Pro X through a USB connection from the Behringer X32 Compact mixing desk at The Old Abbey Taphouse.</p>
+            <p>I then divided these multitracks into their respective bands, exported each set of multitracks into a folder, and imported these into four different Pro Tools sessions where I mixed each band's performance on a Solid State Logic Duality Delta mixing console.</p>
+            <p>Each set was around 40 minutes, so mixing everything took me a few weeks. Once all four sets were mixed and mastered, I delivered them to Step Ladder Records who intended to use them for a radio broadcast but hasn't been able to yet.</p>
+            <p>The mixes are available for listening on <a href="https://drive.google.com/drive/folders/1A_WOkEgz6nODJcxRvmUUBLcxkqLkva_d?usp=sharing" target="_blank" class="text-sky-600 hover:underline">this link</a>.</p>
+        `,
+		category: ["Live Sound", "Music Production"],
+		image: "https://static.wixstatic.com/media/a51624_8a6bcf6fe0c441f192f40307a5894d92~mv2.png/v1/fill/w_3744,h_2808,al_c,q_90/a51624_8a6bcf6fe0c441f192f40307a5894d92~mv2.webp",
+		link: "#",
+        dates: "June-October 2023",
+        client: "Step Ladder Records (https://www.stepladderrecords.co.uk)"
+	},
 ];
