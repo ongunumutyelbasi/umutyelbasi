@@ -55,7 +55,7 @@ const allCategories = [...new Set(projects.flatMap(p => p.category))].sort();
 	<div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
 		{projects.map((project) => (
 			<div class="project-card block" data-categories={JSON.stringify(project.category)} data-title={project.title.toLowerCase()}>
-				<a href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`} class="group block cursor-pointer">
+				<a href={`${base}/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`} class="group block cursor-pointer">
 					<div class="aspect-[16/9] overflow-hidden bg-zinc-200 mb-4 rounded-sm">
 						<img 
 							src={project.image} 
