@@ -33,7 +33,7 @@ const isActive = (path: string) => {
                     <h2 class="text-sm font-medium text-zinc-600 tracking-tight mb-8">Sound Engineer</h2>
 					<nav class="space-y-4">
                         <a 
-                            href="/" 
+                            href={`${base}/`}
                             class:list={[
                             "block text-sm font-semibold transition-colors w-fit",
                             isActive('/') ? "text-sky-600" : "text-zinc-400 hover:text-zinc-900"
@@ -43,7 +43,7 @@ const isActive = (path: string) => {
                         </a>
 
                         <a 
-                            href="/about" 
+                            href={`${base}/about`}
                             class:list={[
                             "block text-sm font-semibold transition-colors w-fit",
                             isActive('/about') ? "text-sky-600" : "text-zinc-400 hover:text-zinc-900"
@@ -53,7 +53,7 @@ const isActive = (path: string) => {
                         </a>
 
                         <a 
-                            href="/contact" 
+                            href={`${base}/contact`}
                             class:list={[
                             "block text-sm font-semibold transition-colors w-fit",
                             isActive('/contact') ? "text-sky-600" : "text-zinc-400 hover:text-zinc-900"
@@ -61,7 +61,7 @@ const isActive = (path: string) => {
                         >
                             Contact
                         </a>
-                        </nav>
+                    </nav>
 				</div>
 				
 				<div class="text-xs text-zinc-400 tracking-regular">
