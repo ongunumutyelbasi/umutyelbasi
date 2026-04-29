@@ -10,20 +10,18 @@ const currentYear = new Date().getFullYear();
 
 const base = import.meta.env.BASE_URL;
 
-const currentPath = Astro.url.pathname;
+// 1. Rename 'currentPath' to 'pathname' so the function can see it
+const pathname = Astro.url.pathname;
 
 // Helper to check if the link is active
-// We trim trailing slashes to ensure /about/ and /about match
 const isActive = (path: string) => {
-    // 1. Remove trailing slashes from the current URL for a clean comparison
-    const currentPath = pathname.replace(/\/$/, "");
+    // 2. This now matches the variable name above
+    const current = pathname.replace(/\/$/, "");
     
-    // 2. Build the target path (e.g., "/umutyelbasi/about")
-    // If the path is '/', we just use the base.
-    const targetPath = path === '/' ? base : `${base}${path}`;
+    // 3. Ensure the target path handles the base folder correctly
+    const target = path === '/' ? base : `${base}${path}`;
     
-    // 3. Remove trailing slash from target path and compare
-    return currentPath === targetPath.replace(/\/$/, "");
+    return current === target.replace(/\/$/, "");
 };
 ---
 
