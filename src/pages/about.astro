@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Certifications } from '../data/certifications';
+
+const education = [
+    {
+        year: "2023 — 2024",
+        degree: "MSc Sound Design and Audiovisual Practice",
+        school: "University of Glasgow",
+        description: "Specialized in immersive audio, cross-adaptive processing, and interactive sound for digital environments."
+    },
+    {
+        year: "2020 — 2023",
+        degree: "BSc Sound Engineering and Production",
+        school: "University of Salford",
+        description: "Focused on technical studio production, live sound reinforcement, and audio electronics."
+    },
+    {
+        year: "2010 — 2020",
+        degree: "Classical Music Education",
+        school: "Istanbul",
+        description: "Foundation in music theory, performance, and methodical creative discipline."
+    }
+];
+---
+
+<Layout title="Umut Yelbaşı - Sound Engineer">
+	<header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
+        <h2 class="text-4xl font-semibold tracking-tight text-zinc-900 mb-0">About</h2>
+        
+        <a 
+            href="/umut-yelbasi_cv.pdf" 
+            download="Umut_Yelbasi_CV.pdf"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-sky-600 border border-sky-600 text-sky-600 hover:text-white rounded-full text-xs font-semibold uppercase tracking-regular transition-all"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download CV
+        </a>
+    </header>
+
+	<section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12 items-stretch"> 
+		<div class="relative bg-zinc-200 overflow-hidden rounded-sm shadow-sm min-h-[400px] lg:min-h-0"> 
+			<img 
+				src="src/images/XmasConcert2023-5.JPEG" 
+				alt="Umut Yelbaşı" 
+				class="absolute inset-0 w-full h-full object-cover transition-all duration-700" 
+			/>
+		</div>
+		
+		<div class="space-y-6 py-0"> 
+			<div class="space-y-4 text-zinc-600 leading-relaxed text-md font-light">
+				<p class="mb-6">
+					I specialise in creating detailed, immersive sonic environments through meticulous mixing, mastering, and inventive sound design. With a foundation in classical music, I take a methodical approach to every project, ensuring each piece of work reaches its full technical and creative potential.
+				</p>
+				<p class="mb-6">
+					My experience in the industry began in Istanbul, assisting with the microphone setup for Mor ve Ötesi’s symphonic concert at the Hagia Irene. Since then, I have spent over eight years refining my craft across various music and sound technologies.
+				</p>
+				<p class="mb-6">
+					After completing a BSc in Sound Engineering and Production at the University of Salford, I earned an MSc in Sound Design and Audiovisual Practice from the University of Glasgow. I am currently based in Salford, Greater Manchester, where I work on freelance audio projects alongside my own personal music, which is available on all major streaming platforms.
+				</p>
+				<p class="mb-0">
+					I am always interested in collaborating on creative projects that require a disciplined and passionate approach to sound.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="mb-6">
+		<h3 class="text-2xl font-semibold tracking-tight text-zinc-900">Certifications</h3>
+	</div>
+	
+	<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+		{Certifications.map(({ image, title, company, type }) => (
+			<div class="group">
+				<div class="aspect-[1.414/1] bg-zinc-200 overflow-hidden rounded-sm mb-3 border border-sky-500">
+					<img 
+						src={image} 
+						alt={`${title} - ${company}`} 
+						class="w-full h-full object-cover transition-transform duration-500"
+					/>
+				</div>
+				<h4 class="text-md font-semibold text-zinc-900 uppercase tracking-regular mb-1 leading-[1.2]">{title}</h4>
+				<p class="text-sm font-semibold text-sky-500 tracking-wide mb-1">{type}</p>
+                <p class="italic font-regular text-xs text-zinc-500 tracking-wide">{company}</p>
+			</div>
+		))}
+	</section>
+
+    <section class="mb-24">
+        <div class="mb-12">
+            <h3 class="text-2xl font-semibold tracking-tight text-zinc-900">Education</h3>
+        </div>
+
+        <div class="space-y-0">
+            {education.map((item) => (
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-12 border-t border-zinc-100 py-8 first:border-t-0 group">
+                    <div class="pt-1">
+                        <span class="text-xs font-semibold text-sky-600 uppercase tracking-widest leading-none">
+                            {item.year}
+                        </span>
+                    </div>
+                    
+                    <div class="relative">
+                        <h4 class="text-xl font-semibold text-zinc-900 leading-tight mb-1 group-hover:text-sky-600 transition-colors duration-300">
+                            {item.degree}
+                        </h4>
+                        
+                        <div class="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-4">
+                            {item.school}
+                        </div>
+                        
+                        <p class="text-md text-zinc-600 leading-relaxed max-w-2xl font-light">
+                            {item.description}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </section>
+
+</Layout>

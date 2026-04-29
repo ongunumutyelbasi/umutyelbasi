@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects, getSlug } from '../../data/projects';
+import { ArrowLeft } from '@lucide/astro';
+
+// Tell Astro which paths to generate
+export async function getStaticPaths() {
+  return projects.map((project) => {
+    // Generate a URL-friendly slug from the title (or add a 'slug' field to your data)
+    const slug = project.title.toLowerCase().replace(/\s+/g, '-');
+    
+    return {
+        params: { slug: getSlug(project.title) },
+        props: { project }, // This passes the whole project object including the full array
+    };
+  });
+}
+
+// Grab the data from props
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} - Umut Yelbaşı`}>
+	<article class="max-w-full mx-auto">
+		<header class="mb-12">
+            <div class="flex flex-col gap-2 mb-10">
+                
+                <div>
+                    <a href="/" class="inline-flex items-center gap-1 uppercase text-xs font-semibold tracking-regular text-zinc-400 hover:text-sky-600 transition-colors">
+                        <ArrowLeft class="w-4 h-4" />
+                        Back to Portfolio
+                    </a>
+                </div>
+
+                <div>
+                    <h1 class="text-5xl md:text-6xl font-semibold tracking-tight text-zinc-900 leading-tight">
+                        {project.title}
+                    </h1>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    {project.category.map(cat => (
+                        <span class="text-[15px] font-semibold tracking-wide uppercase py-1 px-3 bg-sky-100 text-sky-900 rounded-full">
+                            {cat}
+                        </span>
+                    ))}
+                </div>
+            </div>
+
+            <div class="aspect-[32/9] overflow-hidden rounded-sm bg-zinc-100 border border-zinc-100 shadow-sm">
+                <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </header>
+
+		<div class="grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-12 lg:gap-24">
+			<aside class="lg:sticky lg:top-24 h-fit">
+				<div class="space-y-6">
+                    <div class="border-l border-sky-400 pl-4">
+						<h3 class="text-[10px] font-semibold uppercase tracking-wide text-zinc-400 mb-1">Dates</h3>
+						<p class="text-sm text-zinc-900 font-medium">{project.dates}</p>
+					</div>
+                    <div class="border-l border-sky-400 pl-4">
+						<h3 class="text-[10px] font-semibold uppercase tracking-wide text-zinc-400 mb-1">Client</h3>
+						<p class="text-sm text-zinc-900 font-medium">{project.client}</p>
+					</div>
+                </div>
+			</aside>
+
+			<div class="rich-content space-y-12 pb-24">
+				<section class="prose prose-zinc prose-lg max-w-none">
+					<div class="text-md text-zinc-600 leading-relaxed font-light" set:html={project.longDesc} />
+				</section>
+
+				<div class="border-t border-zinc-100 pt-12">
+					<p class="text-sm text-zinc-400 italic">
+						Detailed project documentation and media for {project.title} coming soon.
+					</p>
+				</div>
+			</div>
+		</div>
+	</article>
+</Layout>
+
+<style>
+	@reference "../../styles/global.css";
+
+	.rich-content :global(h3) {
+		@apply text-2xl font-semibold text-zinc-900 mt-12 mb-6;
+	}
+
+	.rich-content :global(p) {
+		@apply text-zinc-600 leading-relaxed mb-6;
+	}
+
+    .rich-content :global(figure) {
+        /* Centering the container and making it only as wide as its content */
+        @apply flex flex-col items-center my-10;
+    }
+
+    .rich-content :global(img) {
+        @apply h-auto rounded-sm border border-zinc-100 shadow-sm;
+        
+        /* Set your height constraints */
+        @apply max-h-[60vh] md:max-h-[75vh] w-auto;
+    }
+</style>
+
+<style>
+    @reference "../../styles/global.css";
+
+    .rich-content :global(h3) {
+        @apply text-2xl font-semibold text-zinc-900 mt-12 mb-6;
+    }
+
+    .rich-content :global(p) {
+        @apply text-zinc-600 leading-relaxed mb-6;
+    }
+</style>

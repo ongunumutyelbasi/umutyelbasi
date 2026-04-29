@@ -1,17 +1,229 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects';
 
+const allCategories = [...new Set(projects.flatMap(p => p.category))].sort();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Umut Yelbaşı - Sound Engineer">
+	<header class="mb-4">
+		<h2 class="text-4xl font-semibold tracking-tight text-zinc-900 mb-0">Sound Portfolio</h2>
+	</header>
+
+	<div class="sticky top-0 z-40 -mx-12 px-12 py-4 bg-zinc-50/50 backdrop-blur-md border-b border-zinc-100/0 mb-4">
+		<div class="flex items-center gap-2">
+			<div id="filter-container" class="flex flex-wrap gap-2 transition-all duration-300 opacity-100 h-8">
+				<button class="filter-btn active text-[10px] font-semibold tracking-wider uppercase px-3 h-full rounded-full border border-zinc-200 bg-white text-zinc-500 transition-all cursor-pointer" data-category="all">
+					All
+				</button>
+				{allCategories.map(cat => (
+					<button class="filter-btn text-[10px] font-semibold tracking-wider uppercase px-3 h-full rounded-full border border-zinc-200 bg-white text-zinc-500 transition-all cursor-pointer" data-category={cat}>
+						{cat}
+					</button>
+				))}
+			</div>
+
+			<div id="search-wrapper" class="group relative flex items-center bg-white border border-zinc-200 hover:border-sky-500 rounded-full overflow-hidden transition-all duration-300 w-8 h-8 focus-within:border-sky-500">
+				<div class="flex items-center justify-center w-8 h-8 shrink-0 text-zinc-400 group-hover:text-sky-500 group-focus-within:text-sky-500">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+					</svg>
+				</div>
+
+				<input 
+					type="text" 
+					id="project-search" 
+					placeholder="Search projects..." 
+					class="w-full opacity-0 pointer-events-none text-sm bg-transparent focus:outline-none transition-opacity duration-200"
+				/>
+
+				<button id="search-clear" class="hidden absolute right-0 top-0 bottom-0 px-2.5 items-center justify-center text-zinc-400 hover:text-sky-600 transition-colors cursor-pointer bg-white">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+				
+				<button id="search-toggle" class="absolute inset-0 cursor-pointer" aria-label="Open search"></button>
+			</div>
+		</div>
+	</div>
+
+	<div id="no-results" class="hidden py-20 text-center border-2 border-dashed border-zinc-200 rounded-sm">
+		<p class="text-zinc-400">No projects found matching your criteria.</p>
+	</div>
+
+	<div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+		{projects.map((project) => (
+			<div class="project-card block" data-categories={JSON.stringify(project.category)} data-title={project.title.toLowerCase()}>
+				<a href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`} class="group block cursor-pointer">
+					<div class="aspect-[16/9] overflow-hidden bg-zinc-200 mb-4 rounded-sm">
+						<img 
+							src={project.image} 
+							alt={project.title}
+							class="w-full h-full object-cover group-hover:scale-103 transition-all duration-500 ease-in-out"
+						/>
+					</div>
+
+					<div class="space-y-2">
+						<div class="flex gap-2">
+							{project.category.map((cat) => (
+								<span class="text-[10px] font-semibold tracking-wider uppercase py-1 px-2 bg-sky-100 text-sky-900 rounded-full">
+									{cat}
+								</span>
+							))}
+						</div>
+						
+						<h3 class="text-xl font-semibold group-hover:text-sky-600 transition-color leading-[1.2]">
+							{project.title}
+						</h3>
+						
+						<p class="text-sm text-zinc-600 leading-[1.4] tracking-regular line-clamp-3" set:html={project.desc} />
+
+						<div class="pt-2 flex items-center text-xs font-semibold uppercase tracking-wider group-hover:gap-2 transition-all">
+							View Project <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		))}
+	</div>
+</Layout>
+
+<style>
+    @reference "../styles/global.css";
+
+    .filter-btn:not(.active):hover {
+        @apply border-sky-600 text-sky-600;
+    }
+
+    .filter-btn.active {
+        @apply bg-sky-600 border-sky-600 text-white;
+        cursor: pointer;
+    }
+
+    #search-wrapper.is-active {
+        @apply w-64;
+    }
+
+    #search-wrapper.is-active input {
+        @apply opacity-100 pointer-events-auto pr-8;
+    }
+</style>
+
+<script>
+	const filterButtons = document.querySelectorAll('.filter-btn');
+	const projectCards = document.querySelectorAll('.project-card');
+	const noResults = document.getElementById('no-results');
+	const grid = document.getElementById('project-grid');
+
+	const searchToggle = document.getElementById('search-toggle');
+	const searchClear = document.getElementById('search-clear');
+	const searchWrapper = document.getElementById('search-wrapper');
+	const searchInput = document.getElementById('project-search') as HTMLInputElement;
+
+	let selectedCategories = new Set(['all']);
+	let searchQuery = '';
+
+	function updateFilters() {
+		let visibleCount = 0;
+
+		projectCards.forEach((card) => {
+			const projectCats = JSON.parse(card.getAttribute('data-categories') || '[]');
+			const title = card.getAttribute('data-title') || '';
+			
+			const matchesFilter = selectedCategories.has('all') || 
+				projectCats.some(cat => selectedCategories.has(cat));
+				
+			const matchesSearch = title.includes(searchQuery.toLowerCase());
+
+			if (matchesFilter && matchesSearch) {
+				card.classList.remove('hidden');
+				visibleCount++;
+			} else {
+				card.classList.add('hidden');
+			}
+		});
+
+		if (visibleCount === 0) {
+			noResults?.classList.remove('hidden');
+			grid?.classList.add('hidden');
+		} else {
+			noResults?.classList.add('hidden');
+			grid?.classList.remove('hidden');
+		}
+	}
+
+	function updateButtonUI() {
+		filterButtons.forEach((btn) => {
+			const cat = btn.getAttribute('data-category');
+			const isActive = selectedCategories.has(cat);
+
+			if (isActive) {
+				btn.classList.add('active');
+				btn.classList.remove('text-zinc-400', 'border-zinc-200', 'bg-white');
+			} else {
+				btn.classList.remove('active');
+				btn.classList.add('text-zinc-400', 'border-zinc-200', 'bg-white');
+			}
+		});
+	}
+
+	searchToggle?.addEventListener('click', (e) => {
+		e.stopPropagation();
+		searchWrapper?.classList.add('is-active');
+		searchToggle?.classList.add('hidden');
+		setTimeout(() => searchInput.focus(), 200);
+	});
+
+	searchInput?.addEventListener('input', (e) => {
+		searchQuery = (e.target as HTMLInputElement).value;
+		if (searchQuery.length > 0) {
+			searchClear?.classList.remove('hidden');
+			searchClear?.classList.add('flex');
+		} else {
+			searchClear?.classList.add('hidden');
+		}
+		updateFilters();
+	});
+
+	searchClear?.addEventListener('click', (e) => {
+		e.stopPropagation();
+		searchInput.value = '';
+		searchQuery = '';
+		searchClear?.classList.add('hidden');
+		searchInput.focus();
+		updateFilters();
+	});
+
+	document.addEventListener('click', (e) => {
+		const isClickInside = searchWrapper?.contains(e.target as Node);
+		if (!isClickInside && searchQuery.length === 0) {
+			searchWrapper?.classList.remove('is-active');
+			searchToggle?.classList.remove('hidden');
+			searchInput.value = '';
+			updateFilters();
+		}
+	});
+
+	filterButtons.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const category = btn.getAttribute('data-category') || 'all';
+			if (category === 'all') {
+				selectedCategories.clear();
+				selectedCategories.add('all');
+			} else {
+				selectedCategories.delete('all');
+				if (selectedCategories.has(category)) {
+					selectedCategories.delete(category);
+					if (selectedCategories.size === 0) selectedCategories.add('all');
+				} else {
+					selectedCategories.add(category);
+				}
+			}
+			updateButtonUI();
+			updateFilters();
+		});
+	});
+
+	updateButtonUI();
+</script>
