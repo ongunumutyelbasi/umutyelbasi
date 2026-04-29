@@ -429,7 +429,7 @@ export const projects = [
             <div style="width: 100%; display: flex; justify-content: center;">
                 <iframe 
                     src="https://www.linkedin.com/embed/feed/update/urn:li:share:7014718684451471360" 
-                    height="1200" 
+                    height="1800" 
                     width="100%" 
                     frameborder="0" 
                     allowfullscreen="" 
