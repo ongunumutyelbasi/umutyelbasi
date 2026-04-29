@@ -8,6 +8,8 @@ interface Props {
 const { title } = Astro.props;
 const currentYear = new Date().getFullYear();
 
+const base = import.meta.env.BASE_URL;
+
 const currentPath = Astro.url.pathname;
 
 // Helper to check if the link is active
