@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { envField } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -9,5 +10,10 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://ongunumutyelbasi.github.io',
-  base: '/umutyelbasi'
+  base: '/umutyelbasi',
+  env: {
+    schema: {
+      BASE_URL: envField.string({ context: 'client', access: 'public', default: '/' }),
+    }
+  }
 });

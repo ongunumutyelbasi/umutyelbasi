@@ -71,16 +71,10 @@ const { project } = Astro.props;
                 </div>
 			</aside>
 
-			<div class="rich-content space-y-12 pb-24">
+			<div class="rich-content space-y-12 pb-12">
 				<section class="prose prose-zinc prose-lg max-w-none">
 					<div class="text-md text-zinc-600 leading-relaxed font-light" set:html={project.longDesc} />
 				</section>
-
-				<div class="border-t border-zinc-100 pt-12">
-					<p class="text-sm text-zinc-400 italic">
-						Detailed project documentation and media for {project.title} coming soon.
-					</p>
-				</div>
 			</div>
 		</div>
 	</article>

@@ -1,4 +1,5 @@
 export const getSlug = (title: string) => title.toLowerCase().replace(/\s+/g, '-');
+import { BASE_URL } from 'astro:env/client';
 
 export const projects = [
 	{
@@ -95,6 +96,22 @@ export const projects = [
         dates: "January-March 2023",
         client: "Amber Jones"
 	},
+    {
+		title: "Cannabis Museum Amsterdam - Audio Guide",
+		desc: 'Collaborating with sound engineer Can Ülgenci, I developed a diverse multi-language soundscape and score for the Amsterdam Cannabis Museum, spanning centuries of musical styles from ancient Tajik ceremonies to contemporary 21st-century themes.',
+        longDesc: `
+            <p>I assisted sound engineer Can Ülgenci in creating the audio guide soundscape and score for the <a href="https://cannabismuseum-amsterdam.com/" target="_blank" class="text-sky-600 hover:underline">Cannabis Museum</a> in Amsterdam.</p>
+            <p>The story of cannabis begins centuries ago, which means my task was to create different styles of music for a very wide range of instances from Tajiki funeral ceremonies to the depiction of the 21st century.</p>
+            <p>This was a fun and very challenging project that I'm proud of. The audio guide is expected to be launched in May 2023, in multiple languages.</p>
+            <p>You can listen to the score albums on <a href="https://open.spotify.com/album/73iol4FuicduHooYhX3SMM?si=5VULc6hfSYqiFnuSJh-ljw" target="_blank" class="text-sky-600 hover:underline">Spotify</a> and <a href="https://music.apple.com/tr/album/cannabis-museum-amsterdam-original-audio-guide-soundtrack/1707638564" target="_blank" class="text-sky-600 hover:underline">Apple Music</a>.</p>
+            <p>You can also listen to the whole audio guide by <a href="https://cannabismuseum-amsterdam.com/audiotour/" target="_blank" class="text-sky-600 hover:underline">clicking here</a>.</p>
+        `,
+		category: ["Music Production", "Sound Design"],
+		image: "https://static.wixstatic.com/media/a51624_56803e61ece242f7a63957f4c426078f~mv2.jpg/v1/fill/w_1199,h_734,al_c,q_85,enc_avif,quality_auto/a51624_56803e61ece242f7a63957f4c426078f~mv2.jpg",
+		link: "#",
+        dates: "January-April 2023",
+        client: "Cannabis Museum Amsterdam"
+	},
 	{
 		title: "Glasgow Subway: Field Recording Project",
 		desc: "This project is an acousmatic soundscape that utilises manipulated field recordings to construct a continuous, immersive journey through Glasgow's subway system, contrasting industrial mechanical sounds with natural human atmospheres.",
@@ -188,22 +205,6 @@ export const projects = [
 		link: "#",
         dates: "November-December 2023",
         client: "N/A"
-	},
-    {
-		title: "Cannabis Museum Amsterdam - Audio Guide",
-		desc: 'Collaborating with sound engineer Can Ülgenci, I developed a diverse multi-language soundscape and score for the Amsterdam Cannabis Museum, spanning centuries of musical styles from ancient Tajik ceremonies to contemporary 21st-century themes.',
-        longDesc: `
-            <p>I assisted sound engineer Can Ülgenci in creating the audio guide soundscape and score for the <a href="https://cannabismuseum-amsterdam.com/" target="_blank" class="text-sky-600 hover:underline">Cannabis Museum</a> in Amsterdam.</p>
-            <p>The story of cannabis begins centuries ago, which means my task was to create different styles of music for a very wide range of instances from Tajiki funeral ceremonies to the depiction of the 21st century.</p>
-            <p>This was a fun and very challenging project that I'm proud of. The audio guide is expected to be launched in May 2023, in multiple languages.</p>
-            <p>You can listen to the score albums on <a href="https://open.spotify.com/album/73iol4FuicduHooYhX3SMM?si=5VULc6hfSYqiFnuSJh-ljw" target="_blank" class="text-sky-600 hover:underline">Spotify</a> and <a href="https://music.apple.com/tr/album/cannabis-museum-amsterdam-original-audio-guide-soundtrack/1707638564" target="_blank" class="text-sky-600 hover:underline">Apple Music</a>.</p>
-            <p>You can also listen to the whole audio guide by <a href="https://cannabismuseum-amsterdam.com/audiotour/" target="_blank" class="text-sky-600 hover:underline">clicking here</a>.</p>
-        `,
-		category: ["Music Production", "Sound Design"],
-		image: "https://static.wixstatic.com/media/a51624_56803e61ece242f7a63957f4c426078f~mv2.jpg/v1/fill/w_1199,h_734,al_c,q_85,enc_avif,quality_auto/a51624_56803e61ece242f7a63957f4c426078f~mv2.jpg",
-		link: "#",
-        dates: "January-April 2023",
-        client: "Cannabis Museum Amsterdam"
 	},
     {
 		title: "VR Game Audio Design",
@@ -429,7 +430,7 @@ export const projects = [
             <div style="width: 100%; display: flex; justify-content: center;">
                 <iframe 
                     src="https://www.linkedin.com/embed/feed/update/urn:li:share:7014718684451471360" 
-                    height="1250" 
+                    height="1400" 
                     width="100%" 
                     frameborder="0" 
                     allowfullscreen="" 
@@ -459,5 +460,296 @@ export const projects = [
 		link: "#",
         dates: "June-October 2023",
         client: "Step Ladder Records (https://www.stepladderrecords.co.uk)"
+	},
+    {
+		title: "Cymatics: MSc Sound Design and Audiovisual Practice Portfolio",
+		desc: "I constructed custom physical cymatics rigs using speakers, brass plates, and water dishes to transform acoustic vibrations into visible geometric patterns, documenting the results through a series of experimental audiovisual compositions.",
+        longDesc: String.raw`
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">INTRODUCTION</h4>
+            <p>For my portfolio, I've created a series of audiovisual works based on the concept of cymatics, which is the study of visible sound and vibration. These works were produced by the construction of specialised rigs with speakers as the basis.</p>
+            <p>I first came across a demonstration of cymatics on Nigel John Stanford's YouTube channel, through his video titled <i>"CYMATICS: Science Vs. Music - Nigel Stanford"</i>. In the video, Stanford, a musician and engineer from New Zealand, uses the concept of cymatics to create visualisations for his music. The rigs he uses ranges from Chladni plates (which will be mentioned later in this commentary) and speaker dishes to ferrofluids and Ruben's Tubes.</p>
+            <p>Once I started doing research, I discovered Hans Jenny's work on cymatics which went into detail regarding the physics and science behind the subject. Jenny, Swiss physician, natural scientist, and the father of the term cymatics, opens his book on the subject with the following words:</p>
+            <blockquote class="border-l-4 border-sky-600 bg-sky-50/70 p-4 my-6 italic text-zinc-700">
+                "Whenever we look in Nature, animate or inanimate, we see widespread evidence of periodic systems. (...) Events then, do not take place in a continuous sequence, in a straight line, but are in a continual state of constant vibration, oscillation, undulation and pulsation."
+            </blockquote>
+            <p>As my initial goal was to find ways to implement cymatics in my creative process, not unlike a musical instrument, I put Jenny's work aside for a moment to find examples of creative uses of cymatics, similar to the video by Nigel John Stanford (which would go on to be the main inspiration behind the construction of my own videos).</p>
+            <p>One project I found was by Daniel Breuer and Jasper Kirton-Wingate who have created a website, discussing creative uses of cymatics, in which they discuss several artists working with cymatics, and how cymatics can be a creative output that lets the artist simultaneously express himself with visuals and sounds, without the need to think about one or the other and instead focusing on a single creative output - because the audio output will create the visual output itself. (Breuer & Kirton-Wingate, 2016) In their website, the first video they've shared is by Dr Gabriel Kelemen, called <i>"evolution"</i>. I was especially interested by the lighting techniques Kelemen used to enhance the cymatics patterns created on the dish of water he's using, which was an inspiration for how I built my filming setup for my own water rig. (Kelemen, 2007)</p>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">BUILDING THE CYMATICS RIG</h4>
+            <p>For the purposes of the portfolio, I wanted to focus on two demonstrations of cymatics: powder on a plate (or a Chladni plate) and a petri dish filled with water, placed above a speaker.</p>
+            <p>In his book, Hans Jenny mentions E. F. P. Chladni, who "discovered the sonorous figures named after him while he was investigating Lichtenberg figures. With a violin bow he stroked metal plates sprinkled with powder and was thus able to make the vibration processes visible."</p>
+            <p>This method of vibrating a metal plate with powder on top ended up being the basis for the main rig of the experiment. The difference is the way it was constructed.</p>
+            <p>The original Chladni plate setup worked by vibrating the plate, sprinkled with powder, using a physical bow, like one used for stringed instruments. As the plate vibrates, the powder will find its way to the non-vibrating sections of the surface and form patterns, dependant on the frequency of the vibration. Through experimentation, Chladni devised an equation for the zeros of the standing wave on a square Chladni plate constrained from a single point (generally the centre to hold the plate flat) to predict the patterns that specific frequencies will yield:</p>
+            <div class="math-block py-0 text-center text-lg">
+                $$\cos\left(\frac{n\pi x}{L}\right) \cdot \cos\left(\frac{m\pi y}{L}\right) - \cos\left(\frac{m\pi x}{L}\right) \cdot \cos\left(\frac{n\pi y}{L}\right) = 0$$
+            </div>
+            <p>Below is a table of some possible patterns:</p>
+            <div class="my-10">
+                <img 
+                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-1.webp"
+                    alt="" 
+                    class="w-full rounded-sm shadow-sm border border-zinc-100"
+                />
+            </div>
+            <p>Experiments have revealed that the powder particles accumulate at the sections of the plate where there are no vibrations. Another way of saying this is that at any given vibration frequency of the plate, anywhere that doesn't have a particle accumulation is vibrating. For my portfolio, I haven't delved into the physics in depth and instead took Chladni's theory and Jenny's experiments as a basis for experimenting with cymatics rigs to find ways of visualising music through physical devices.</p>
+            <p>Most of Jenny's experiments use crystal oscillators as the actuator/for frequency determination, and brass plates as the base where the powder is poured onto (and therefore where the patterns emerge on). For the first iteration of my portfolio rig, I've used the speaker of a guitar amp, a preamp, a metal cooking tray, and a plastic cup as to connect the speaker cone and the tray, also transmitting the vibrations. Below is an image of what this looks like.</p>
+            <div class="flex flex-col md:flex-row gap-4 my-2">
+                <figure class="flex-1">
+                    <img 
+                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-2.webp"
+                        alt="The plastic cup has a hole cut in the middle of its base, through which a metal screw was put, which was then screwed through the middle of the cooking tray." 
+                        class="w-full rounded-sm" 
+                    /> 
+                    <figcaption class="text-xs text-zinc-400 mt-2 italic">The plastic cup has a hole cut in the middle of its base, through which a metal screw was put, which was then screwed through the middle of the cooking tray.</figcaption>
+                </figure>
+            </div>
+            <p>The idea was to get the vibrations from the speaker cone with the circular base of the cup, concentrate them onto a single point with the screw, and then vibrate the plate/tray from its middle. The plastic of the cup is thin but sturdy enough to hold up the plates and transfer the vibrations equally.</p>
+            <p>Once tested, it was clear that the tray was too large for the purposes of the experiment, both in dimensions and weight. Vibrations could be observed, but they were focused too much on the outer edges and corners of the tray and once the sand particles got to these points, there was no way for them to get back to the centre to move to form a pattern, or to move in any other way apart from vibrating randomly.</p>
+            <p>The tray was replaced by a custom cut 20cm square brass plate, the material and size of which was selected to reproduce Chladni's original experiment as closely as possible. There aren’t any specifications on the exact size of the plate, but the material is specified as brass, and the size was chosen based on my experience with the cooking tray. Below is an image of what this rig looks like.</p>
+            <div class="my-10">
+                <img 
+                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-3.webp"
+                    alt="" 
+                    class="w-full rounded-sm shadow-sm border border-zinc-100"
+                />
+            </div>
+            <p>The second rig, the petri dish filled with water, was simpler to make. As the dish is already round, once the dimension was chosen as one that's slightly larger than the one of the speaker, the only thing left was sticking the dish onto the speaker cone using epoxy glue. To have the ability to use both rigs at the same time, this rig is built on a second, smaller speaker.</p>
+            <p>Once the glue cured, the dish was filled with water and the rig was tested by sending signals through the second channel of the preamp that was used for the Chladni plate speaker, giving me the ability to have two independent cymatics rigs. Below is what this rig looks like.</p>
+            <div class="my-4">
+                <img 
+                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-4.png"
+                    alt="" 
+                    class="w-full rounded-sm shadow-sm border border-zinc-100"
+                />
+            </div>
+            <p>The dish gets the vibrations from the speaker cone that it's glued onto, therefore vibrating an equal amount from all directions. This results in patterns in the water that change with each frequency - similar to what happens with the powder in the Chladni plate experiment - but this time it's more difficult to distinguish the differences.</p>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">EXPERIMENTS & PORTFOLIO PIECES</h4>
+            <p>The signal generator I've used is the native Test Oscillator plug-in in Logic Pro X on my laptop, which is connected to a Scarlett 2i2 audio interface, which is then connected via audio jack cables to the preamp.</p>
+            <p>The signal into the preamp comes through the Scarlett 2i2 audio interface, which has a pair of L/R jack outputs which go into inputs 1 and 2 of the preamp - therefore if I want to send a DAW channel to only one speaker and another channel only to the other speaker, I can do this by panning each DAW channel to whichever direction's output each speaker's input is connected to.</p>
+            <p>Before the resonant frequency experiment, to have a starting point of testing resonant frequencies of the plate, a somewhat crude experiment was conducted, where the plate was flicked three times, and the sound of this was recorded. The recording was then put into Logic Pro X, and using the Graphic EQ plug-in, the more prominent frequencies in the ringing were determined.</p>
+            <p>The most prominent peaks were observed at 170 Hz and 535 Hz, as well as a smaller peak at 1800 Hz. I also knew from having done a large-scale sine sweep when testing whether the rig worked, that there was resonance around 100 Hz, so a starting point of 80 Hz was set (to test whether I had missed any frequencies below 100 Hz).</p>
+            <p>Then, a packet of colourful sand was poured on the plate. The test consisted of playing sine sweeps between frequencies 100 Hz apart (100-200, 200-300, 300-400, ..., 1000-1100, etc.) with a sweep time of 30 seconds at each interval, which gave me enough time to detect any hints of movement of the sand particles, which then allowed me to take a note of the frequency at which this movement happened as accurately as possible (as it would be a blink-of-an-eye moment before the frequency indicator would continue with the rest of the sweep), which then allowed me to test individual frequencies around the frequency that I noted down.</p>
+            <p>To determine whether a frequency was resonant or not, I looked at the shapes created by the powder on the plate when there is signal present. If the powder, without any external force, goes into a symmetrical pattern (some irregularities are expected due to human error in setting up the rig or imperfections in the system, such as miniscule bumps or curves on the plate), then the frequency that the pattern appears in is a resonant frequency of the plate/surface. Below are some patterns that appeared, and the frequencies they appeared in:</p>
+            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 260Hz:</h4>
+            <div class="flex flex-col md:flex-row gap-4 my-4">
+                <div class="flex-1">
+                    <img 
+                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/260hz-1.webp"
+                        alt="" 
+                        class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
+                    />
+                </div>
+                <div class="flex-1">
+                    <img 
+                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/260hz-2.webp"
+                        alt="" 
+                        class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
+                    />
+                </div>
+            </div>
+            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 527Hz:</h4>
+            <div class="flex flex-col md:flex-row gap-4 my-4">
+                <div class="flex-1">
+                    <img 
+                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/527hz-1.webp"
+                        alt="" 
+                        class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
+                    />
+                </div>
+                <div class="flex-1">
+                    <img 
+                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/527hz-2.webp"
+                        alt="" 
+                        class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
+                    />
+                </div>
+            </div>
+            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 1020Hz:</h4>
+            <div class="flex flex-col md:flex-row gap-4 my-4">
+                <div class="flex-1">
+                    <img 
+                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/1020hz-1.jpeg"
+                        alt="" 
+                        class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
+                    />
+                </div>
+                <div class="flex-1">
+                    <img 
+                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/1020hz-2.webp"
+                        alt="" 
+                        class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
+                    />
+                </div>
+            </div>
+            <p>Based on these demonstrations, it can be inferred that as the resonant frequency increases, the complexity of the pattern also increases - the higher the frequency, the more complex the pattern.</p>
+            <p>For the dish of water there was no specific resonant frequency, as it reacted to almost all frequencies and sounds sent through, however the lower frequency sounds seemed to get a larger reaction.</p>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">CREATING THE AUDIOVISUAL DEMONSTRATION</h4>
+            <p>Once enough of these resonant frequencies were found, the next step was to create and/or adapt pieces of music or sound art based on these frequencies. To prepare for the composition/production process, I used the sine wave generator of the native Test Oscillator plug-in on Logic to record 8 bars for each of the frequencies, which were then used as support for the various instruments and synthesisers that later found their place within pieces.</p>
+            <p>One challenge at this point was the fact that most of the resonant frequencies didn't correspond to musical notes. The solution was transposing the notes up or down using semitones and cents. Below is an example:</p>
+            <div class="text-center pt-0">
+                $$\text{527 Hz is a resonant frequency of the plate. The closest note to this is C5, which is 523 Hz.}$$
+            </div>
+            <div class="math-block pb-0 text-center text-lg">
+                $$\frac{12 \log \frac{523}{527}}{\log 2} = -0.1319041847 \approx -0.132$$
+            </div>
+            <p>There are approximately 0.132 semitones between the two frequencies, which is very slightly higher than 13 cents. So, theoretically, when I use the Pitch Shifter on a recorded instance of a C5 note to bring it up 13 cents, the note should create resonance on the plate. This, of course, was tested and confirmed to be accurate.</p>
+            <p>For the first track, several different virtual instruments from Logic Pro X's built-in list were used, including <i>Anthemic Lead</i> with the <i>AUPitch</i> legacy effect added after a 260 Hz boost (sent to both the Chladni setup and the water setup), and the Classic Electric Piano for the melodies (sent only to the water setup due to its flexibility with frequencies). In addition, as the Chladni plate needs a very high volume and sonorous signal for the patterns to form, the sine wave signals are paired up with their corresponding notes on the <i>Anthemic Lead</i> layer, as well as being used as base chords.</p>
+            <div class="my-4">
+                <img 
+                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-5.avif"
+                    alt="" 
+                    class="w-full rounded-sm shadow-sm border border-zinc-100"
+                />
+            </div>
+            <p>A note that didn't need any transposition was A3, the frequency of which is exactly 220 Hz, coincidentally one of the plate's resonant frequencies.</p>
+            <p>The major challenge was getting the Chladni plate to react as quickly as possible to the frequency changes in order to overcome the limitations of having to hold a note for long enough to form a pattern, and then go onto the next note and hold that for long enough to form the next pattern, and not have incomplete or incoherent patterns, hence the assignment of the visualisation of drones and long base chords.</p>
+            <p>Not fully satisfied with limiting myself to oscillators and sine waves, I tried running one of my guitar-based compositions through the rig and found that, as long as the notes I included were close enough to the resonant frequencies of the plate, I could get great results both on the plate and the liquid cymatics rig. However, as the Chladni rig needs a very loud and strong signal to create the patterns, the sand on the plate wasn't being triggered by the drone synth alone.</p>
+            <p>For this piece and a majority of other pieces utilising the Chladni plate, I combined the synthesisers/instruments with sine waves in the resonant frequencies that would be the closest to the notes played and recorded the result on the plate, which is what's edited into the final video over a bounce of the tracks with their original instrumentations.</p>
+            <p>After the video of the first, purpose-made piece was completed, the rest of the videos were based on a selection of my pre-existing compositions, with adjustments and alterations where necessary, such as pairing weaker instruments with a sine wave in the corresponding notes/frequencies to get the desired effect.</p>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">THE VIDEOS</h4>
+            <p>I wanted to find a creative way of breaking the potential monotony that a repetitive collection of videos of the same two rigs would bring. The main way of doing this was the various styles and instrumentations used throughout the musical pieces, which I've produced over the last few years, which all provide different frequency and timbre content. Additionally, another creative aspect of the portfolio is how the videos are edited.</p>
+            <p>The editing was loosely inspired by my own project, "Time in Flames", produced earlier during the course. They aren't recreations, but I built on top of the techniques I used (such as overlaying multiple videos on top of each other). The piece that this is most evident in is the <i>Space Platform Theme</i> video.</p>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">Space Platform Theme</h4>
+            <p>The piece starts by focusing on Chladni patterns and as it develops, incorporates the water rig by using the "Difference" blend mode on Premiere Pro by "creating colours based on the differences between the values of the source colour and the underlying colour". This creates an eery, grungy look as we can clearly see both the water and the sand reacting to the music as it happens. I took care in making sure the minor waves on the surface of the water were distinguishable by adjusting the contrast, highlights and shadows of the water rig video.</p>
+            <div class="my-6">
+                <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                    <iframe 
+                        src="https://www.youtube.com/embed/I00-s54ftSM"
+                        title="Space Platform Theme - Cymatics Demonstration" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                </div>
+            </div>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">The Red Rocket</h4>
+            <p>The piece starts with a solo guitar signal sent to the water rig. This gave me a great opportunity to capture exactly how the water reacts to differences in frequency and sound pressure level - the first four bars are a repeating pattern of strumming guitar that go through four chords with varying strumming strengths, so the differences that different notes and their loudness make are clearly visible.</p>
+            <p>The rest of the piece consists of a bass guitar and a synth - the bass guitar is linked to the water rig as well and that gives a view of how different frequency bands effect the water. Higher frequencies tend to create more and faster ripples on the surface, while lower frequencies create more circular, centred, and slower ripples.</p>
+            <p>The drone synth is linked to the Chladni plate, which changes shape based on the frequency, which is self-explanatory - the shape changes as the frequency changes throughout the piece.</p>
+            <div class="my-6">
+                <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                    <iframe 
+                        src="https://www.youtube.com/embed/B_zKnBlwpeI"
+                        title="The Red Rocket - Cymatics Demonstration" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                </div>
+            </div>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">Chladni Plate Test</h4>
+            <p>This is more of a demonstration than a musical piece, and it is meant to showcase the technical capabilities of the rig in a more technical, straightforward way. The first part of the piece consists of singular sine waves in the resonant frequencies of the plate, and we go through these to test how the transitions between frequencies work. On the second part of the test, we test what happens when instead of one frequency, two frequencies are sent to the plate at once, creating a chord. The rig falls short here, partly because the previous frequencies have caused most of the sand to fall over so there isn't much material to react, but also because the patterns become too complicated to be observed without a more accurate rig.</p>
+            <div class="my-6">
+                <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                    <iframe 
+                        src="https://www.youtube.com/embed/R-vN-4wfGY0"
+                        title="Chladni Plate Test - Cymatics Demonstration" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                </div>
+            </div>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">Bass + Water</h4>
+            <p>This video is another demonstration, created out of curiosity as I wanted to observe what would happen when a live sound source was sent to the water rig instead of computer-generated sounds. I repeat several themes throughout the video in order to compare the reactions of the water to see if the results are random or if specific notes and/actions on the guitar have specific, exact translations on the water.</p>
+            <div class="my-6">
+                <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                    <iframe 
+                        src="https://www.youtube.com/embed/-PdnTSi45vY"
+                        title="Bass + Water - Cymatics Demonstration" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                </div>
+            </div>
+            <p>Below is a comparison of two instances of playing the same note, at around the same strength, the same amount of time after the note is first triggered.</p>
+            <div class="my-4">
+                <img 
+                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-6.avif"
+                    alt="" 
+                    class="w-full rounded-sm shadow-sm border border-zinc-100"
+                />
+            </div>
+            <p>Although the general rule is that waves start from the middle and go outwards, the exact patterns and shapes seem to either be so sensitive that the things that make the difference aren't visible/audible to a casual observer, or there seems to be a randomness to the patterns that happen.</p>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">water waves</h4>
+            <p>After seeing how intricate the surface of the water could get following my other videos, I wanted to record this extreme close-up of the water specifically to capture how the surface deals with different types of signals - single frequencies, multiple frequencies, low and high notes, melodies, etc.</p>
+            <div class="my-6">
+                <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                    <iframe 
+                        src="https://www.youtube.com/embed/ke7wLneR-CY"
+                        title="water waves - Cymatics Demonstration" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                </div>
+            </div>
+            <p>This video was recorded with 50 frames per second in 1080p (but exported in 4K) in order to capture the movement of the waves better. Most of the piece includes slowed down videos in order to give a better look at the motion of the waves.</p>
+            <p>The lighting techniques I mentioned in the introduction proved useful here as they helped me find the best way to light the surface in a way that would show the camera the most detail.</p>
+            <p>The water caused the white light to refract and created colourful light streaks in several sections of the surface, which was an unexpected but welcome addition to the video.</p>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">Castlefield</h4>
+            <p><i>Castlefield</i> takes the concept used for <i>water waves</i> and combines it with a complete musical piece. The exact techniques are used, this time to record the reactions of the water to the bass guitar track of the music. Intercut are clips of the water reacting to the bass drum, which again gives an insight on how opposite ends of the frequency spectrum effect the water in completely different ways.</p>
+            <div class="my-6">
+                <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                    <iframe 
+                        src="https://www.youtube.com/embed/GcRJtygvKlc"
+                        title="Castlefield - Cymatics Demonstration" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                </div>
+            </div>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">2 piano pieces</h4>
+            <p><i>2 piano pieces</i> is exactly what its title suggests - it's a recording of the reaction of the water rig to two piano pieces, recorded in succession. This one provided a result that was surprising to me, as I expected a similar result to the more intricate, detailed water waves of <i>Castlefield</i> and <i>water waves</i> - what actually happened was tiny but dense waves, concentrated at the centre of the plate, seemingly only responding to the SPL of the notes/sound instead of the frequencies.</p>
+            <div class="my-6">
+                <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                    <iframe 
+                        src="https://www.youtube.com/embed/IkLGbewdxmE"
+                        title="2 piano pieces - Cymatics Demonstration" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                </div>
+            </div>
+            <p>My regret with <i>2 piano pieces</i> is not having recorded it in 50 fps, because even though the resolution would be in 1080p, it would be much easier to observe and analyse the quick but small waves on the surface by slowing down the video. This is still possible, but doesn't work as well due to the video only being in 25 frames per second, therefore resulting in motion blur.</p>
+            <h4 class="text-lg font-semibold mb-1 text-sky-600">REFLECTION</h4>
+            <p>I set out to use cymatics creatively, as an instrument, and throughout the project, mostly through experimentation, I've made various observations.</p>
+            <p>The main thing is that choosing the right cymatics concept for different purposes is key to getting the most effective visualisation. While Chladni plates are perhaps the easiest observed presentation, they aren't fit for use for complex signals such as fast melodies or intricate instrumentations. Liquid cymatics, on the other hand, doesn't produce very easily observable patterns, but reacts very well and quickly to intricate signals and sounds.</p>
+            <p>I will use the knowledge I've gained through my work for my personal projects in the future, hopefully by improving upon itself using the experience I now have. Having a medium that lets me combine my audio work directly with a visualisation element opens up potential audiovisual practice opportunities.</p>
+            <hr class="border-sky-400 my-6" />
+            <section class="references text-sm leading-relaxed">
+                <h4 class="text-lg font-semibold mb-1">REFERENCES</h4>
+                
+                <p class="mb-3 ml-4 -indent-4 text-zinc-500">
+                    Breuer, D. and Kirton-Wingate, J. (2016) <i>Creative projects: Cymatics</i>, Creative Project Space: Undergraduate Works From Goldsmiths Computing. Available at: <a href="https://www.doc.gold.ac.uk/creativeprojects/index.php/work/cymatics/" class="text-sky-600 hover:underline break-all">https://www.doc.gold.ac.uk/creativeprojects/index.php/work/cymatics/</a> (Accessed: 09 May 2024).
+                </p>
+                
+                <p class="mb-3 ml-4 -indent-4 text-zinc-500">
+                    Smithsonian. (2012, December 17) <i>Chladni Plates</i>. The Science Teaching Collection. Available at: <a href="https://americanhistory.si.edu/science/chladni.htm" class="text-sky-600 hover:underline break-all">https://americanhistory.si.edu/science/chladni.htm</a>.
+                </p>
+                
+                <p class="mb-3 ml-4 -indent-4 text-zinc-500">
+                    Kelemen, G. (2007) <i>Evolution</i> [YouTube]. Available at: <a href="https://www.youtube.com/watch?v=CDtfXWXvK_c&t=202s" class="text-sky-600 hover:underline break-all">www.youtube.com/watch?v=CDtfXWXvK_c&t=202s</a> (Accessed: 09 May 2024).
+                </p>
+                
+                <p class="mb-3 ml-4 -indent-4 text-zinc-500">
+                    Lauterwasser, A. (2007) <i>Water sound images: The creative music of the universe</i>. Epping, N.H, Edinburgh: MACROmedia; Floris distributor.
+                </p>
+            </section>
+        `,
+		category: ["Audiovisual", "Sound Design"],
+		image: "/umutyelbasi/images/projects/cymatics/cymatics-6.avif",
+		link: "#",
+        dates: "February-September 2024",
+        client: "Master of Science in Sound Design and Audiovisual Practice - Finishing Project"
 	},
 ];

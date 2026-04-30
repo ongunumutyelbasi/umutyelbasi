@@ -32,6 +32,17 @@ const isActive = (path: string) => {
 		<meta name="viewport" content="width=device-width" />
 		<title>{title}</title>
 		<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+        <script is:inline defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script is:inline defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', inline: true}
+                ]
+            });">
+        </script>
 	</head>
 	<body class="font-['Golos_Text',_sans-serif]">
 		<div class="flex min-h-screen">
@@ -72,10 +83,9 @@ const isActive = (path: string) => {
                     </nav>
 				</div>
 				
-				<div class="text-xs text-zinc-400 tracking-regular">
-					<p>&copy; {currentYear}<br>Umut Yelbaşı</p>
-					<br>
-                    <p>Built with Astro & Tailwind</p>
+				<div class="text-xs tracking-regular">
+                    <p class="text-zinc-500 mb-2">&copy; {currentYear}<br>Umut Yelbaşı</p>
+                    <p class="text-zinc-400">All Rights Reserved</p>
 				</div>
 			</aside>
 
