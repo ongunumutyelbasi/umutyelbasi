@@ -812,4 +812,37 @@ export const projects = [
         dates: "January-March 2024",
         client: "Master of Science in Sound Design and Audiovisual Practice - Finishing Project"
 	},
+    {
+		title: "Shock Radio Awards 2023 - Live Sound Mix",
+		desc: "I recorded multitrack live performances for four bands at The Old Abbey Taphouse and performed full mixing and mastering for Step Ladder Records.",
+        longDesc: `
+            <p>I was tasked with setting up presenter and audience microphones for the 19th Annual Shock Radio Awards, the awards show of the University of Salford's student radio station, Shock Radio.</p>
+            <p>I mixed the sound for the entirety of the 1,5-hour show, which was broadcast live on YouTube, which included pre-recorded bits and incidental music in addition to live speech.</p>
+            <p>I also won the award for "Best Breakfast Show" for my show Gunaydin Salford ("Good morning Salford" in Turkish) after hosting it for three years.</p>
+            <p>The video recording of the whole event can be found below.</p>
+            <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                <iframe 
+                    src="https://www.youtube.com/embed/nvW1dzn-tFQ&t=705s" 
+                    title="The 19th Annual Shock Radio Awards (2023)" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen
+                    class="absolute top-0 left-0 w-full h-full"
+                ></iframe>
+            </div>
+            <figure class="flex-1">
+                <img 
+                    src="${import.meta.env.BASE_URL}/images/projects/shock-awards/shock-awards-1.jpg"
+                    alt="Figure 1 - Microphone input and gain chain" 
+                    class="w-full rounded-sm" 
+                /> 
+                <figcaption class="text-sm text-zinc-500 mt-4 italic">Accepting the award for "Best Breakfast Show" for "Gunaydin Salford", a weekly show I produced for three years during my BSc at the University of Salford. I focused on playing Turkish songs with a new overall theme every week.</figcaption>
+            </figure>
+        `,
+		category: ["Live Sound"],
+		image: "umutyelbasi/images/projects/shock-awards/shock-awards-1.jpg",
+		link: "#",
+        dates: "May 2023",
+        client: "Shock Radio (https://www.shockradio.co.uk)"
+	},
 ];
