@@ -147,7 +147,7 @@ export const projects = [
             <h4 class="text-md font-semibold mt-6 mb-1">References</h4>
             <p>Adobe (2023) <i>Color correction effects, Adjust and correct color in Premiere Pro CC</i>. Available at: <a href="https://helpx.adobe.com/premiere-pro/using/color-correction-adjustment.html" target="_blank" class="text-sky-600 hover:underline">https://helpx.adobe.com/premiere-pro/using/color-correction-adjustment.html</a> (Accessed: 12 December 2023). </p>
         `,
-		category: ["Sound Design"],
+		category: ["Sound Design", "Audiovisual"],
 		image: "https://static.wixstatic.com/media/a51624_a40bb87fd9fa4d1682a584908805d556~mv2.png",
 		link: "#",
         dates: "September-December 2023",
@@ -499,7 +499,7 @@ export const projects = [
                         alt="The plastic cup has a hole cut in the middle of its base, through which a metal screw was put, which was then screwed through the middle of the cooking tray." 
                         class="w-full rounded-sm" 
                     /> 
-                    <figcaption class="text-xs text-zinc-400 mt-2 italic">The plastic cup has a hole cut in the middle of its base, through which a metal screw was put, which was then screwed through the middle of the cooking tray.</figcaption>
+                    <figcaption class="text-sm text-zinc-500 mt-4 italic">The plastic cup has a hole cut in the middle of its base, through which a metal screw was put, which was then screwed through the middle of the cooking tray.</figcaption>
                 </figure>
             </div>
             <p>The idea was to get the vibrations from the speaker cone with the circular base of the cup, concentrate them onto a single point with the screw, and then vibrate the plate/tray from its middle. The plastic of the cup is thin but sturdy enough to hold up the plates and transfer the vibrations equally.</p>
@@ -750,6 +750,66 @@ export const projects = [
 		image: "/umutyelbasi/images/projects/cymatics/cymatics-6.avif",
 		link: "#",
         dates: "February-September 2024",
+        client: "Master of Science in Sound Design and Audiovisual Practice - Finishing Project"
+	},
+    {
+		title: "Heartbeat & Piano - Sonic Art Performance",
+		desc: "In this sonic art performance, I taped a stethoscope to my chest to amplify my heartbeats as the rhythmic foundation for a live piano piece. By processing this biological pulse into a musical clock, I explored the intimate intersection of human physiology and live instrumentation.",
+        longDesc: `
+            <p>In this performance, there is a stethescope taped onto my chest and a microphone attached at the end of the stethescope’s tube, which both amplifies and outputs the sound of my heart beats, and triggers specific sounds based on how strong my heart beats are at any point.</p>
+            <p>The pieces I chose to perform are from Ludovico Einaudi's <i>[extra elements]</i> album, one of my favourites.</p>
+            <h4 class="text-xl font-bold mb-1 text-sky-600">CRITICAL COMMENTARY</h4>
+            <h5 class="text-lg font-semibold mb-1 text-sky-600">Research & Inspiration</h5>
+            <p>With very little experience in sonic arts performance, the first step of my process was to search for inspiration. By a stroke of luck, one of the first performances I found was André Borges’s “INSIDE-OUT”, part of the University of Brighton’s 2011 Performance and Visual Arts Degree Show.</p>
+            <p>In his performance, Borges uses a stethoscope as a microphone to capture the sounds of his heart, having been influenced by John Cage’s experiences at the Harvard University anechoic chamber, where Cage realised he could hear his blood circulation and nervous system in the completely silent atmosphere of the room. (Borges, 2023) I have been inside the University of Salford anechoic chamber as part of my studies and I have also experienced this, but the significance of my case is that I have a heart condition which causes me to have palpitations and an irregular heartbeat.</p>
+            <p>At any given moment, my heart can start beating strongly, not necessarily faster but strong enough for me to feel its movement and shake me if I’m supposed to be standing/sitting still. It also has an irregular beat, which is somewhat under control but still audible from time to time. Considering these, I thought Borges’s “INSIDE-OUT” would be a great starting point for my own Sonic Art Performance project.</p>
+            <h5 class="text-lg font-semibold mb-1 text-sky-600">Building the Microphone</h5>
+            <p>The initial plan was to build a stethoscope microphone using electret microphones, which turned out to be the wrong approach. After failing to make multiple iterations of similar plans work, I then decided to base my design on that of Anand Bashkar from his 2012 journal article, <i>“A simple electronic stethoscope for recording and playback of heart sounds”</i>, where he uses a pre-made computer microphone with its own 3.5mm jack cable already attached. (Bhaskar, 2012) After taking apart the outer shell, I was left with a bendable metal pole and a working microphone at the end of it.</p>
+            <p>I also bought a stethoscope, the listening prongs of which I cut to have a straight tube. I then superglued the open end of the straight tube to the microphone’s surrounding case. I ran this through a TRS to TRRS converter which proved to be unreliable, after which I turned to using the audio interface feature of my Zoom H4n Pro sound recorder. I plugged in the microphone to its external mic input, and the recorder into my computer using a USB A to USB Mini A cable. This turned the stethoscope into a contact microphone, which I could then tape onto my chest and pick up my heartbeat.</p>
+            <h5 class="text-lg font-semibold mb-1 text-sky-600">Max Patch</h5>
+            <p>I was deliberating ways of getting the heartbeat to trigger actions within Max, and after trying to do this via the pitch or frequency of the heartbeats, I decided on basing it on the volume of the beats. The signal had to be boosted to output a useable audio level, so from the “adc~” object, which “outputs one or more signals (one per outlet) with audio from hardware input devices,” according to its Max MSP reference documentation, is connected to a <i>gain~</i> slider which is also connected to another gain­~ slider. Both being turned up results in a heartbeat that’s audible when connected to an output.</p>
+            <figure class="flex-1">
+                <img 
+                    src="${import.meta.env.BASE_URL}/images/projects/heartbeat-piano/heartbeat-piano-1.png"
+                    alt="Figure 1 - Microphone input and gain chain" 
+                    class="w-full rounded-sm" 
+                /> 
+                <figcaption class="text-sm text-zinc-500 mt-4 italic">Figure 1 - Microphone input and gain chain</figcaption>
+            </figure>
+            <p>The Scaled Output of the second slider is connected to two things – an <i>ezdac~</i> object to route the signal to the selected output, and a <i>meter~</i> object to quantify the level of its signal, which is in turn connected to a number object to use as values for any object it might be connected to (in this case this was <i>select</i> objects, which will be mentioned later). The result of this was shown in decimal points, to the thousandths, so in order to get a more specific number to use to trigger buttons, this was multiplied by 10 and the multiplication was connected to an integer object to show a single number with no decimals – this is then used to choose between 1 and 7 on the switch object that it’s connected to.</p>
+            <figure class="flex-1">
+                <img 
+                    src="${import.meta.env.BASE_URL}/images/projects/heartbeat-piano/heartbeat-piano-2.png"
+                    alt="Figure 1 - Microphone input and gain chain" 
+                    class="w-full rounded-sm" 
+                /> 
+                <figcaption class="text-sm text-zinc-500 mt-4 italic">Figure 2 - Audio samples connected to triggerable buttons</figcaption>
+            </figure>
+            <p>The switch is connected to 7 buttons, each of which trigger 7 different <i>playlist</i> objects with sound effects loaded. These sound effects are arctic-based as the musical part of the performance, which will be discussed later, consists of Ludovico Einaudi’s piano album, Extra Elements. One of the songs is called “Elegy for the Arctic”, which is the reason behind the selection of sounds.</p>
+            <h5 class="text-lg font-semibold mb-1 text-sky-600">Triggered Sounds</h5>
+            <ul class="list-disc list-outside ml-5 space-y-2 mb-6">
+                <li>Ice in water (duplicated for two values)</li>
+                <li>Arctic winds (duplicated for two values)</li>
+                <li>Seal noises (duplicated for two values)</li>
+                <li>Birds chirping near water</li>
+                <li>Mechanical sounds in water near the shore</li>
+            </ul>
+            <p>The duplication of certain sounds is done so that there is continuity, and the values they are assigned to are the most repeated values based on the tests I did. A previous version of the system was made with seven different sounds but was too incomprehensible to work as intended.</p>
+            <h5 class="text-lg font-semibold mb-1 text-sky-600">Piano</h5>
+            <p>There was always an awareness of another element being needed to support the heartbeat and triggered sounds, but it wasn’t clear what it would be.</p>
+            <p>The piece had started with a personal basis, my heart condition, and it was only natural that it would be completed with another personal element – the piano. I have been playing the piano since I was four years old and I had never paid attention to my heartbeats while playing, so this was an easy decision.</p>
+            <p>In theory, the piano would be a separate audio source which wouldn’t affect the heartbeat going into the Max patch at all – however, this proved to be an optimistic theory as during the performance the piano was clearly picked up by the stethoscope microphone, which resulted in some unpredictable (but welcome) results where the output signal was a mix of both the heart beat and a distorted version of the piano, the distortion being a result of the nature of the microphone.</p>
+            <h5 class="text-lg font-semibold mb-1 text-sky-600">Reflection</h5>
+            <p>Through my research and preparation, I’ve learned about microphone circuits, electronics, and Max MSP. I discovered contact microphones and digital stethoscopes, the uses of which can range from digitising heart beats to performance art.</p>
+            <p>Although the performance didn’t fully go as planned technically, I believe the message wasn’t disrupted, and a successful connection between the music and heartbeats was made.</p>
+            <h4 class="text-md font-semibold mt-6 mb-1 text-sky-600">References</h4>
+            <p>Borges, A. (2023) Inside-out, Inside-Out. Available at: <a href="https://www.saxcretino.com/p/inside-out-booklet.html" target="_blank" class="text-sky-600 hover:underline">https://www.saxcretino.com/p/inside-out-booklet.html</a> (Accessed: 21 January 2024).</p>
+            <p>Bhaskar, A. (2012) ‘A simple electronic stethoscope for recording and playback of heart sounds’, Advances in Physiology Education, 36(4), pp. 360–362. doi:10.1152/advan.00073.2012.</p>
+        `,
+		category: ["Sound Design", "Music Production"],
+		image: "/umutyelbasi/images/projects/heartbeat-piano/heartbeat-piano-thumbnail.png",
+		link: "#",
+        dates: "January-March 2024",
         client: "Master of Science in Sound Design and Audiovisual Practice - Finishing Project"
 	},
 ];
