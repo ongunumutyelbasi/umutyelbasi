@@ -758,7 +758,7 @@ export const projects = [
         longDesc: `
             <p>In this performance, there is a stethescope taped onto my chest and a microphone attached at the end of the stethescope’s tube, which both amplifies and outputs the sound of my heart beats, and triggers specific sounds based on how strong my heart beats are at any point.</p>
             <p>The pieces I chose to perform are from Ludovico Einaudi's <i>[extra elements]</i> album, one of my favourites.</p>
-            <h4 class="text-xl font-bold mb-1 text-sky-600">CRITICAL COMMENTARY</h4>
+            <h4 class="text-xl font-semibold mb-1 text-sky-600">CRITICAL COMMENTARY</h4>
             <h5 class="text-lg font-semibold mb-1 text-sky-600">Research & Inspiration</h5>
             <p>With very little experience in sonic arts performance, the first step of my process was to search for inspiration. By a stroke of luck, one of the first performances I found was André Borges’s “INSIDE-OUT”, part of the University of Brighton’s 2011 Performance and Visual Arts Degree Show.</p>
             <p>In his performance, Borges uses a stethoscope as a microphone to capture the sounds of his heart, having been influenced by John Cage’s experiences at the Harvard University anechoic chamber, where Cage realised he could hear his blood circulation and nervous system in the completely silent atmosphere of the room. (Borges, 2023) I have been inside the University of Salford anechoic chamber as part of my studies and I have also experienced this, but the significance of my case is that I have a heart condition which causes me to have palpitations and an irregular heartbeat.</p>
