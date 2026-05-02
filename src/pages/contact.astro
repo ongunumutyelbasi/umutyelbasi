@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Mail, FileUser, Music } from '@lucide/astro';
+---
+
+<Layout title="Contact | Umut Yelbaşı">
+    <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
+        <h2 class="text-4xl font-semibold tracking-tight text-zinc-900 mb-0">Contact</h2>
+        
+        <div class="flex gap-3">
+            <a 
+                href="/umutyelbasi/umut-yelbasi_cv.pdf"
+                download="Umut_Yelbasi_CV.pdf"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-sky-600 border border-sky-600 text-sky-600 hover:text-white rounded-full text-xs font-semibold uppercase tracking-regular transition-all"
+            >
+                <FileUser class="w-4 h-4"/> Download CV
+            </a>
+            <a 
+                href="mailto:umutyelbasi@gmail.com"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-sky-600 border border-sky-600 text-sky-600 hover:text-white rounded-full text-xs font-semibold uppercase tracking-regular transition-all"
+            >
+                <Mail class="w-4 h-4"/> Send me an email
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-full mx-auto py-12 px-4">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Left: Direct Contact -->
+            <section class="space-y-8">
+                <div>
+                    <h3 class="text-xs font-bold text-sky-600 uppercase tracking-widest mb-4">Email</h3>
+                    <a 
+                        href="mailto:umutyelbasi@gmail.com" 
+                        class="text-2xl font-medium text-zinc-900 hover:text-sky-600 transition-colors duration-300 flex items-center gap-3 group"
+                    >
+                        umutyelbasi@gmail.com
+                        <Mail class="w-6 h-6 text-zinc-300 group-hover:text-sky-600 transition-colors" />
+                    </a>
+                </div>
+
+                <div>
+                    <h3 class="text-xs font-bold text-sky-600 uppercase tracking-widest mb-4">Documents</h3>
+                    <a 
+                        href="/umutyelbasi/umut-yelbasi_cv.pdf" 
+                        download="Umut_Yelbasi_CV.pdf"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 hover:bg-sky-600 text-white rounded-full text-xs font-semibold uppercase tracking-widest transition-all"
+                    >
+                        <FileUser class="w-4 h-4"/> 
+                        Download Full CV
+                    </a>
+                </div>
+            </section>
+
+            <!-- Right: Social Profiles -->
+            <section>
+                <h3 class="text-xs font-bold text-sky-600 uppercase tracking-widest mb-6">Socials & Portfolios</h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="https://linkedin.com/in/umutyelbasi" target="_blank" class="flex items-center gap-3 text-zinc-600 hover:text-zinc-900 transition-colors group">
+                            
+                            <span class="font-light">LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/umutyelbasi" target="_blank" class="flex items-center gap-3 text-zinc-600 hover:text-zinc-900 transition-colors group">
+                            
+                            <span class="font-light">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/umutyelbasi" target="_blank" class="flex items-center gap-3 text-zinc-600 hover:text-zinc-900 transition-colors group">
+                            
+                            <span class="font-light">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" class="flex items-center gap-3 text-zinc-600 hover:text-zinc-900 transition-colors group">
+                            <Music class="w-5 h-5 text-zinc-400 group-hover:text-sky-600" />
+                            <span class="font-light">Spotify / Streaming</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</Layout>

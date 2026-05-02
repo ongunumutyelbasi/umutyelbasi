@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Mail, FileUser, Music } from '@lucide/astro';
+
+// Track Data: Replace these IDs with your actual SoundCloud track IDs
+const mixes = [
+    {
+        title: "Project Alpha - Cinematic Mix",
+        client: "University of Glasgow Film Dept",
+        description: "A dense, multi-layered mix focused on spatial clarity and low-end impact for a sci-fi short film.",
+        trackId: "123456789", // Replace with your SoundCloud track ID
+        role: "Mixing & Sound Design"
+    },
+    {
+        title: "Live Jazz Ensemble - Session 04",
+        client: "Salford Studio A",
+        description: "Recorded and mixed live-to-tape. The goal was to preserve the natural room acoustics of the studio.",
+        trackId: "987654321", // Replace with your SoundCloud track ID
+        role: "Recording & Mixing Engineer"
+    }
+];
+
+// Playlist ID if you prefer a single collective player
+const playlistId = "1538439721"; 
+---
+
+<Layout title="Sample Mixes | Umut Yelbaşı">
+    <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
+        <h2 class="text-4xl font-semibold tracking-tight text-zinc-900 mb-0">Sample Mixes</h2>
+        
+        <div class="flex gap-3">
+            <a 
+                href="/umutyelbasi/umut-yelbasi_cv.pdf"
+                download="Umut_Yelbasi_CV.pdf"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-sky-600 border border-sky-600 text-sky-600 hover:text-white rounded-full text-xs font-semibold uppercase tracking-regular transition-all"
+            >
+                <FileUser class="w-4 h-4"/> Download CV
+            </a>
+            <a 
+                href="mailto:umutyelbasi@gmail.com"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-sky-600 border border-sky-600 text-sky-600 hover:text-white rounded-full text-xs font-semibold uppercase tracking-regular transition-all"
+            >
+                <Mail class="w-4 h-4"/> Send me an email
+            </a>
+        </div>
+    </header>
+    
+    <main class="max-w-full mx-auto py-0 px-6">
+        <!-- Option 1: Individual Tracks -->
+        <!-- 
+        <div class="space-y-20">
+            {mixes.map((mix) => (
+                <section class="group">
+                    <div class="mb-6">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="text-[10px] font-bold text-sky-600 uppercase tracking-[0.2em]">
+                                {mix.role}
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-zinc-900 group-hover:text-sky-600 transition-colors">
+                            {mix.title}
+                        </h3>
+                        <p class="text-sm text-zinc-400 font-medium mt-1">{mix.client}</p>
+                    </div>
+
+                    <div class="w-full bg-zinc-50 rounded-sm border border-zinc-100 overflow-hidden">
+                        <iframe 
+                            width="100%" 
+                            height="166" 
+                            scrolling="no" 
+                            frameborder="no" 
+                            allow="autoplay" 
+                            src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${mix.trackId}&color=%230ea5e9&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`}
+                        />
+                    </div>
+
+                    <p class="mt-4 text-sm text-zinc-500 leading-relaxed font-light max-w-3xl italic">
+                        "{mix.description}"
+                    </p>
+                </section>
+            ))}
+        </div>
+        -->
+        <!-- Option 2: Full Playlist (Optional) -->
+        
+        <section class="mt-0 border-zinc-100 pt-0">
+            <h3 class="text-lg font-semibold text-zinc-400 mb-2">Full Showcase Playlist</h3>
+            <iframe 
+                width="100%" 
+                height="450" 
+                scrolling="no" 
+                frameborder="no" 
+                allow="autoplay" 
+                src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/${playlistId}&color=%230ea5e9&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true`}
+            />
+        </section> 
+        
+    </main>
+</Layout>

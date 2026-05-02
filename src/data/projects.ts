@@ -89,6 +89,18 @@ export const projects = [
             <p>My biggest task was to match the narration tones and to bring the video conference recordings to an acceptable state where they wouldn't stand out or distract the audience during the documentary. I did this to the best of my abilities using the limited amount of time I had.</p>
             <p>After the audio was edited and fixed, I went over the final edit on <i>Premiere Pro</i>, making sure audio & video clips were in sync, levels were similar, and there were no issues overall with either the edit or the audio mix.</p>
             <p>The full documentary is available to watch below.</p>
+            <div class="my-6">
+                <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-sm border border-zinc-100">
+                    <iframe 
+                        src="https://www.youtube.com/embed/ws3SS6apY3I"
+                        title="The Race to Sustainability - A short documentary by Amber Jones" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                </div>
+            </div>
         `,
 		category: ["Post Production"],
 		image: "https://static.wixstatic.com/media/a51624_3b0eb7c5e857482aa2c056066f45fd24~mv2.jpg",
@@ -840,7 +852,7 @@ export const projects = [
             </figure>
         `,
 		category: ["Live Sound"],
-		image: "umutyelbasi/images/projects/shock-awards/shock-awards-1.jpg",
+		image: "/umutyelbasi/images/projects/shock-awards/shock-awards-1.jpg",
 		link: "#",
         dates: "May 2023",
         client: "Shock Radio (https://www.shockradio.co.uk)"
