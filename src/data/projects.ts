@@ -1,5 +1,14 @@
-export const getSlug = (title: string) => title.toLowerCase().replace(/\s+/g, '-');
-import { BASE_URL } from 'astro:env/client';
+const BASE_URL = (import.meta as any).env.BASE_URL;
+
+export const getSlug = (title: string) => 
+  title
+    .toLowerCase()
+    .replace(/&/g, 'and')          // Convert & to 'and'
+    .replace(/:/g, '')             // Remove colons
+    .replace(/[^\w\s-]/g, '')      // Remove all other symbols (ampersands, etc)
+    .replace(/\s+/g, '-')          // Replace spaces with dashes
+    .replace(/-+/g, '-')           // Collapse multiple dashes into one
+    .trim();                       // Remove trailing/leading whitespace
 
 export const projects = [
 	{
@@ -13,10 +22,11 @@ export const projects = [
             <p>This was my first time in a while working on a major production, and it reminded me how much I’ve missed being behind the desk for live shows. Grateful for the chance to be part of it, and I'll definitely be back next year.</p>
         `,
         category: ["Live Sound"],
-		image: "/umutyelbasi/images/mjf2025.png",
-		link: "/projects/manchester-jazz-festival-2025",
+		image: `${BASE_URL}/images/mjf2025.png`,
+		link: `${BASE_URL}/projects/${getSlug("Manchester Jazz Festival 2025")}`,
         dates: "May 2025",
-        client: "Manchester Jazz Festival"
+        client: "Manchester Jazz Festival",
+        clientUrl: "https://manchesterjazz.com/"
 	},
     {
 		title: "The Secret Number",
@@ -34,9 +44,10 @@ export const projects = [
         `,
         category: ["Post Production", "Sound Design", "Music Production"],
 		image: "https://i.ytimg.com/vi/8bbvBrqrlBA/maxresdefault.jpg",
-		link: "/projects/the-secret-number",
+		link: `${BASE_URL}/projects/${getSlug("The Secret Number")}`,
         dates: "September-December 2025",
-        client: "Personal Project"
+        client: "Personal Project",
+        clientUrl: null
 	},
 	{
 		title: "Aidiyet: Verbondenheid",
@@ -76,9 +87,10 @@ export const projects = [
         `,
         category: ["Post Production"],
 		image: "https://static.wixstatic.com/media/a51624_423957ec2eb94b8d8f6685e4fdfe96eb~mv2.png/v1/fill/w_1836,h_1036,fp_0.50_0.50,q_95,enc_avif,quality_auto/a51624_423957ec2eb94b8d8f6685e4fdfe96eb~mv2.png",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Aidiyet: Verbondenheid")}`,
         dates: "July-September 2024",
-        client: "Nisa Ceylan & Tulip Institute for Turkish Language and Culture"
+        client: "Nisa Ceylan & Tulip Institute for Turkish Language and Culture",
+        clientUrl: null
 	},
 	{
 		title: "The Race to Sustainability",
@@ -104,9 +116,10 @@ export const projects = [
         `,
 		category: ["Post Production"],
 		image: "https://static.wixstatic.com/media/a51624_3b0eb7c5e857482aa2c056066f45fd24~mv2.jpg",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("The Race to Sustainability")}`,
         dates: "January-March 2023",
-        client: "Amber Jones"
+        client: "Amber Jones",
+        clientUrl: null
 	},
     {
 		title: "Cannabis Museum Amsterdam - Audio Guide",
@@ -120,16 +133,44 @@ export const projects = [
         `,
 		category: ["Music Production", "Sound Design"],
 		image: "https://static.wixstatic.com/media/a51624_56803e61ece242f7a63957f4c426078f~mv2.jpg/v1/fill/w_1199,h_734,al_c,q_85,enc_avif,quality_auto/a51624_56803e61ece242f7a63957f4c426078f~mv2.jpg",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Cannabis Museum Amsterdam - Audio Guide")}`,
         dates: "January-April 2023",
-        client: "Cannabis Museum Amsterdam"
+        client: "Cannabis Museum Amsterdam",
+        clientUrl: "https://cannabismuseum-amsterdam.com/"
 	},
 	{
 		title: "Glasgow Subway: Field Recording Project",
 		desc: "This project is an acousmatic soundscape that utilises manipulated field recordings to construct a continuous, immersive journey through Glasgow's subway system, contrasting industrial mechanical sounds with natural human atmospheres.",
+        longDesc: `
+            <p><b>Technical details:</b> Stereo, 48 kHz, 24 bits per sample</p>
+            <p>I used various techniques including overlaying and colour manipulation.</p>
+            <h3 class="text-lg font-semibold mt-3 mb-1">Critical Commentary</h3>
+            <h4 class="text-md font-semibold mt-6 mb-1 italic">Time in Flames</h4>
+            <p><i>Time in Flames</i> is an audiovisual composition made up of self-recorded, separate video and audio sources, created with the intention of viewing as an individual piece. The playback incorporates stereo audio and panning, and therefore is suitable for speaker or headphone use. All sounds and videos used have been recorded for the purposes of the composition.</p>
+            <h4 class="text-md font-semibold mt-6 mb-1">Production & Inspiration</h4>
+            <p>With a background in creative video editing using Premiere Pro, I’ve been interested in experimenting with blend modes. I was aware that the Screen mode could produce interesting blending effects between two consecutive graphic layers, which, along with simple opacity automation, is what the edit mainly revolves around.</p>
+            <p>Below is how the official Adobe documentation describes the <i>Screen</i> mode:</p>
+            <p>“Multiplies the complements of the channel values, and then takes the complement of the result. The result color is never darker than either input colour. Using the Screen mode is similar to projecting multiple photographic slides simultaneously onto a single screen.”</p>
+            <p>The <i>Screen</i> mode allowed me to create an effect akin to double-exposure photography, which incorporates a subject inside another subject, seamlessly merging the two images together. The frames above from the sequence that starts on the 37thsecond and goes on until 3 minutes 33 seconds in are good examples of points where the Screen mode is used to represent interconnectivity, and interaction. The two clips represent different people with different personalities, sometimes aligning and sometimes not, often times moving (or living) at different paces.</p>
+            <p>The same blend mode allowed the creation of the image below where the flame of a candle seems to be burning inside a guitar.</p>
+            <p>For the frame above, the guitar clip was lined up so that the flame would sit between two strings both because it makes sense visually, but also as a suggestion that the moving string affects the flame as it vibrates – in the context of the message of the composition, this can be interpreted as outside forces affecting a life.</p>
+            <p>The overall goal of the audio-visual composition is to be an expression of the “journey of life”. To do this, several imageries are used – the candle flame that the busy street clips are overlaid on top of signifies human life, a finite, volatile state of existence which ends suddenly.</p>
+            <p>The busy street going in four different directions is the world around the subject, happening all at once without waiting. This image was made by rotating and flipping four copies of the original clip, placing them as a 2x2 grid, and adding and automating the Relief feature of the Emboss effect. The regular purpose of this effect is to give depth by sharpening the edges of objects in the clip. For the composition, I’ve used it to not only sharpen the edges but to clone and separate a layer from the original clip, which ended up creating visuals that resemble the patterns in a Rorschach test.</p>
+            <p>With the very first sound on the video being a Shepard scale – an endlessly rising sequence that defies time – the timeless existence before life is shown. The overlaid flames in different (and constantly changing) colours are meant to signify the other lives that cross our paths, some change, some go through quicker than others, and some stay with us.</p>
+            <p>This was translated into visuals through the speed at which the different flames rotate, and their changing colours. While the first inverted flame spins at a rate of 30 degrees per 2 frames, the second inverted flame has a spin rate of 60 degrees per 2 frames – this was a conscious choice that predicts and accompanies the accelerating transitions and rhythm of the piece.</p>
+            <p>The main video of the burning candle is originally an 8-minute, 3840 x 2160 25fps video. The shots of the candle alone are almost completely untouched, apart from zooming in or masking the clip. For the overlaid clips with changing colours, Premiere Pro’s ASC CDL effect was used, which stands for American Society of Cinematographers Color Decision List and is used to standardise “the exchange of primary colour information.” (Adobe, 2023) Through the use of this effect I was able to manipulate the colours of the clips into other primary colours, and paired with being overlaid on the unchanged clip, this created dimension.</p>
+            <p>The “flame through the guitar” imagery was mentioned earlier. This is a key aspect of the composition as it’s both the shot that the rest of the composition builds upon, and technically the specific point that the Screen blending mode is utilised most successfully. The shot from 03:13 to 03:30 is four shots stacked on top of each other and is also the climax of the first part of the composition. The effect is great at removing the black parts of a clip that’s on top of another clip, which is exactly what happened here – the dark background is almost completely removed, allowing just the red candle and the flame itself to be visible from the guitar’s sound hole.</p>
+            <h4 class="text-md font-semibold mt-6 mb-1">Reflection</h4>
+            <p>By trying to limit the number of different clips used, and instead attempting to focus on how to manipulate the limited number of clips I had recorded to get a varied enough result, my challenge was with challenging my ability and knowledge of Adobe Premiere Pro, the video editing software the composition was created on. As previously mentioned, I was interested in experimenting with the video effects, which is what I did, and ended up with some unexpected results through methods I wasn’t anticipating. The colour emboss effect is one of these effects, which is something I had been avoiding due to a misguided prejudice of thinking of the effect as an outdated gimmick. Once I did some research on its uses and methods, I decided that it would be a good way of showing depth and abstractness, and it worked.</p>
+            <p>Overall, the composition reached the point that I was trying to take it to in terms of its symbolism, plot and visuals.</p>
+            <h4 class="text-md font-semibold mt-6 mb-1">References</h4>
+            <p>Adobe (2023) <i>Color correction effects, Adjust and correct color in Premiere Pro CC</i>. Available at: <a href="https://helpx.adobe.com/premiere-pro/using/color-correction-adjustment.html" target="_blank" class="text-sky-600 hover:underline">https://helpx.adobe.com/premiere-pro/using/color-correction-adjustment.html</a> (Accessed: 12 December 2023). </p>
+        `,
 		category: ["Sound Design"],
 		image: "https://glasgowsubwaycrawl.com/static/0953b6bc4fd27bada99fac1a2fca07f3/f58be/header-image.jpg",
-		link: "#"
+		link: `${BASE_URL}/projects/${getSlug("Glasgow Subway: Field Recording Project")}`,
+        client: null,
+        clientUrl: null
 	},
 	{
 		title: "Time in Flames",
@@ -161,9 +202,10 @@ export const projects = [
         `,
 		category: ["Sound Design", "Audiovisual"],
 		image: "https://static.wixstatic.com/media/a51624_a40bb87fd9fa4d1682a584908805d556~mv2.png",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Time in Flames")}`,
         dates: "September-December 2023",
-        client: "N/A"
+        client: null,
+        clientUrl: null
 	},
     {
 		title: "Quarantine Music Collabs",
@@ -184,9 +226,10 @@ export const projects = [
         `,
 		category: ["Music Production"],
 		image: "https://static.wixstatic.com/media/a51624_3e6a4119ec1d49a4b010f01b98320a4f~mv2.jpg/v1/fill/w_1280,h_720,fp_0.50_0.50,q_90,enc_avif,quality_auto/a51624_3e6a4119ec1d49a4b010f01b98320a4f~mv2.jpg",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Quarantine Music Collabs")}`,
         dates: "Spring 2020 (Remastered in Summer 2024)",
-        client: "N/A"
+        client: null,
+        clientUrl: null
 	},
     {
 		title: "Walk to Beach: Acousmatic Sound Design",
@@ -214,9 +257,10 @@ export const projects = [
         `,
 		category: ["Sound Design"],
 		image: "https://static.wixstatic.com/media/a51624_8acd774ee60f4bb78dbf511d4025b9f2~mv2.jpg/v1/fill/w_1836,h_1036,fp_0.50_0.50,q_90,enc_avif,quality_auto/a51624_8acd774ee60f4bb78dbf511d4025b9f2~mv2.jpg",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Walk to Beach: Acousmatic Sound Design")}`,
         dates: "November-December 2023",
-        client: "N/A"
+        client: null,
+        clientUrl: null
 	},
     {
 		title: "VR Game Audio Design",
@@ -412,9 +456,10 @@ export const projects = [
         `,
 		category: ["Music Production", "Sound Design"],
 		image: "https://static.wixstatic.com/media/a51624_24a84a4ab54244b0ae69adba6b8da36a~mv2.jpg/v1/fill/w_806,h_454,fp_0.50_0.50,q_90,enc_avif,quality_auto/a51624_24a84a4ab54244b0ae69adba6b8da36a~mv2.jpg",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("VR Game Audio Design")}`,
         dates: "December 2022",
-        client: "N/A"
+        client: null,
+        clientUrl: null
 	},
     {
 		title: "Shock Radio Live Lounges",
@@ -428,9 +473,10 @@ export const projects = [
         `,
 		category: ["Live Sound", "Music Production"],
 		image: "https://static.wixstatic.com/media/a51624_2a552777ace043febbcac98f78ee84e6~mv2.jpg/v1/fill/w_1113,h_628,fp_0.50_0.50,q_90,enc_avif,quality_auto/a51624_2a552777ace043febbcac98f78ee84e6~mv2.jpg",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Shock Radio Live Lounges")}`,
         dates: "January-April 2023",
-        client: "Cannabis Museum Amsterdam"
+        client: "Shock Radio",
+        clientUrl: "https://www.shockradio.co.uk"
 	},
     {
 		title: "Uskudar American Academy 2022 Talent Show - Front of House Mix",
@@ -453,7 +499,7 @@ export const projects = [
         `,
 		category: ["Live Sound"],
 		image: "/umutyelbasi/images/projects/uaa_piano.jpeg",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Uskudar American Academy 2022 Talent Show - Front of House Mix")}`,
         dates: "December 2022",
         client: "Uskudar American Academy, İstanbul"
 	},
@@ -469,9 +515,10 @@ export const projects = [
         `,
 		category: ["Live Sound", "Music Production"],
 		image: "https://static.wixstatic.com/media/a51624_8a6bcf6fe0c441f192f40307a5894d92~mv2.png/v1/fill/w_3744,h_2808,al_c,q_90/a51624_8a6bcf6fe0c441f192f40307a5894d92~mv2.webp",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Step Ladder Records 4-Band Special (Modern Jazz, Funk & Fusion) - Recording, Mix & Master")}`,
         dates: "June-October 2023",
-        client: "Step Ladder Records (https://www.stepladderrecords.co.uk)"
+        client: "Step Ladder Records",
+        clientUrl: "https://www.stepladderrecords.co.uk"
 	},
     {
 		title: "Cymatics: MSc Sound Design and Audiovisual Practice Portfolio",
@@ -497,7 +544,7 @@ export const projects = [
             <p>Below is a table of some possible patterns:</p>
             <div class="my-10">
                 <img 
-                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-1.webp"
+                    src="${BASE_URL}/images/projects/cymatics/cymatics-1.webp"
                     alt="" 
                     class="w-full rounded-sm shadow-sm border border-zinc-100"
                 />
@@ -507,7 +554,7 @@ export const projects = [
             <div class="flex flex-col md:flex-row gap-4 my-2">
                 <figure class="flex-1">
                     <img 
-                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-2.webp"
+                        src="${BASE_URL}/images/projects/cymatics/cymatics-2.webp"
                         alt="The plastic cup has a hole cut in the middle of its base, through which a metal screw was put, which was then screwed through the middle of the cooking tray." 
                         class="w-full rounded-sm" 
                     /> 
@@ -519,7 +566,7 @@ export const projects = [
             <p>The tray was replaced by a custom cut 20cm square brass plate, the material and size of which was selected to reproduce Chladni's original experiment as closely as possible. There aren’t any specifications on the exact size of the plate, but the material is specified as brass, and the size was chosen based on my experience with the cooking tray. Below is an image of what this rig looks like.</p>
             <div class="my-10">
                 <img 
-                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-3.webp"
+                    src="${BASE_URL}/images/projects/cymatics/cymatics-3.webp"
                     alt="" 
                     class="w-full rounded-sm shadow-sm border border-zinc-100"
                 />
@@ -528,7 +575,7 @@ export const projects = [
             <p>Once the glue cured, the dish was filled with water and the rig was tested by sending signals through the second channel of the preamp that was used for the Chladni plate speaker, giving me the ability to have two independent cymatics rigs. Below is what this rig looks like.</p>
             <div class="my-4">
                 <img 
-                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-4.png"
+                    src="${BASE_URL}/images/projects/cymatics/cymatics-4.png"
                     alt="" 
                     class="w-full rounded-sm shadow-sm border border-zinc-100"
                 />
@@ -541,52 +588,52 @@ export const projects = [
             <p>The most prominent peaks were observed at 170 Hz and 535 Hz, as well as a smaller peak at 1800 Hz. I also knew from having done a large-scale sine sweep when testing whether the rig worked, that there was resonance around 100 Hz, so a starting point of 80 Hz was set (to test whether I had missed any frequencies below 100 Hz).</p>
             <p>Then, a packet of colourful sand was poured on the plate. The test consisted of playing sine sweeps between frequencies 100 Hz apart (100-200, 200-300, 300-400, ..., 1000-1100, etc.) with a sweep time of 30 seconds at each interval, which gave me enough time to detect any hints of movement of the sand particles, which then allowed me to take a note of the frequency at which this movement happened as accurately as possible (as it would be a blink-of-an-eye moment before the frequency indicator would continue with the rest of the sweep), which then allowed me to test individual frequencies around the frequency that I noted down.</p>
             <p>To determine whether a frequency was resonant or not, I looked at the shapes created by the powder on the plate when there is signal present. If the powder, without any external force, goes into a symmetrical pattern (some irregularities are expected due to human error in setting up the rig or imperfections in the system, such as miniscule bumps or curves on the plate), then the frequency that the pattern appears in is a resonant frequency of the plate/surface. Below are some patterns that appeared, and the frequencies they appeared in:</p>
-            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 260Hz:</h4>
+            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 260Hz:</h5>
             <div class="flex flex-col md:flex-row gap-4 my-4">
                 <div class="flex-1">
                     <img 
-                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/260hz-1.webp"
+                        src="${BASE_URL}/images/projects/cymatics/260hz-1.webp"
                         alt="" 
                         class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
                     />
                 </div>
                 <div class="flex-1">
                     <img 
-                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/260hz-2.webp"
+                        src="${BASE_URL}/images/projects/cymatics/260hz-2.webp"
                         alt="" 
                         class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
                     />
                 </div>
             </div>
-            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 527Hz:</h4>
+            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 527Hz:</h5>
             <div class="flex flex-col md:flex-row gap-4 my-4">
                 <div class="flex-1">
                     <img 
-                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/527hz-1.webp"
+                        src="${BASE_URL}/images/projects/cymatics/527hz-1.webp"
                         alt="" 
                         class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
                     />
                 </div>
                 <div class="flex-1">
                     <img 
-                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/527hz-2.webp"
+                        src="${BASE_URL}/images/projects/cymatics/527hz-2.webp"
                         alt="" 
                         class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
                     />
                 </div>
             </div>
-            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 1020Hz:</h4>
+            <h5 class="text-md font-medium mb-1">Photo (left) and drawing (right) of cymatics pattern at 1020Hz:</h5>
             <div class="flex flex-col md:flex-row gap-4 my-4">
                 <div class="flex-1">
                     <img 
-                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/1020hz-1.jpeg"
+                        src="${BASE_URL}/images/projects/cymatics/1020hz-1.jpeg"
                         alt="" 
                         class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
                     />
                 </div>
                 <div class="flex-1">
                     <img 
-                        src="${import.meta.env.BASE_URL}/images/projects/cymatics/1020hz-2.webp"
+                        src="${BASE_URL}/images/projects/cymatics/1020hz-2.webp"
                         alt="" 
                         class="w-full h-full object-cover rounded-sm border border-zinc-100 shadow-sm"
                     />
@@ -607,7 +654,7 @@ export const projects = [
             <p>For the first track, several different virtual instruments from Logic Pro X's built-in list were used, including <i>Anthemic Lead</i> with the <i>AUPitch</i> legacy effect added after a 260 Hz boost (sent to both the Chladni setup and the water setup), and the Classic Electric Piano for the melodies (sent only to the water setup due to its flexibility with frequencies). In addition, as the Chladni plate needs a very high volume and sonorous signal for the patterns to form, the sine wave signals are paired up with their corresponding notes on the <i>Anthemic Lead</i> layer, as well as being used as base chords.</p>
             <div class="my-4">
                 <img 
-                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-5.avif"
+                    src="${BASE_URL}/images/projects/cymatics/cymatics-5.avif"
                     alt="" 
                     class="w-full rounded-sm shadow-sm border border-zinc-100"
                 />
@@ -681,7 +728,7 @@ export const projects = [
             <p>Below is a comparison of two instances of playing the same note, at around the same strength, the same amount of time after the note is first triggered.</p>
             <div class="my-4">
                 <img 
-                    src="${import.meta.env.BASE_URL}/images/projects/cymatics/cymatics-6.avif"
+                    src="${BASE_URL}/images/projects/cymatics/cymatics-6.avif"
                     alt="" 
                     class="w-full rounded-sm shadow-sm border border-zinc-100"
                 />
@@ -760,9 +807,10 @@ export const projects = [
         `,
 		category: ["Audiovisual", "Sound Design"],
 		image: "/umutyelbasi/images/projects/cymatics/cymatics-6.avif",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Cymatics: MSc Sound Design and Audiovisual Practice Portfolio")}`,
         dates: "February-September 2024",
-        client: "Master of Science in Sound Design and Audiovisual Practice - Finishing Project"
+        client: "Master of Science in Sound Design and Audiovisual Practice - Finishing Project",
+        clientUrl: null
 	},
     {
 		title: "Heartbeat & Piano - Sonic Art Performance",
@@ -782,7 +830,7 @@ export const projects = [
             <p>I was deliberating ways of getting the heartbeat to trigger actions within Max, and after trying to do this via the pitch or frequency of the heartbeats, I decided on basing it on the volume of the beats. The signal had to be boosted to output a useable audio level, so from the “adc~” object, which “outputs one or more signals (one per outlet) with audio from hardware input devices,” according to its Max MSP reference documentation, is connected to a <i>gain~</i> slider which is also connected to another gain­~ slider. Both being turned up results in a heartbeat that’s audible when connected to an output.</p>
             <figure class="flex-1">
                 <img 
-                    src="${import.meta.env.BASE_URL}/images/projects/heartbeat-piano/heartbeat-piano-1.png"
+                    src="${BASE_URL}/images/projects/heartbeat-piano/heartbeat-piano-1.png"
                     alt="Figure 1 - Microphone input and gain chain" 
                     class="w-full rounded-sm" 
                 /> 
@@ -791,7 +839,7 @@ export const projects = [
             <p>The Scaled Output of the second slider is connected to two things – an <i>ezdac~</i> object to route the signal to the selected output, and a <i>meter~</i> object to quantify the level of its signal, which is in turn connected to a number object to use as values for any object it might be connected to (in this case this was <i>select</i> objects, which will be mentioned later). The result of this was shown in decimal points, to the thousandths, so in order to get a more specific number to use to trigger buttons, this was multiplied by 10 and the multiplication was connected to an integer object to show a single number with no decimals – this is then used to choose between 1 and 7 on the switch object that it’s connected to.</p>
             <figure class="flex-1">
                 <img 
-                    src="${import.meta.env.BASE_URL}/images/projects/heartbeat-piano/heartbeat-piano-2.png"
+                    src="${BASE_URL}/images/projects/heartbeat-piano/heartbeat-piano-2.png"
                     alt="Figure 1 - Microphone input and gain chain" 
                     class="w-full rounded-sm" 
                 /> 
@@ -820,9 +868,10 @@ export const projects = [
         `,
 		category: ["Sound Design", "Music Production"],
 		image: "/umutyelbasi/images/projects/heartbeat-piano/heartbeat-piano-thumbnail.png",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Heartbeat & Piano - Sonic Art Performance")}`,
         dates: "January-March 2024",
-        client: "Master of Science in Sound Design and Audiovisual Practice - Finishing Project"
+        client: "Master of Science in Sound Design and Audiovisual Practice - Finishing Project",
+        clientUrl: null
 	},
     {
 		title: "Shock Radio Awards 2023 - Live Sound Mix",
@@ -844,7 +893,7 @@ export const projects = [
             </div>
             <figure class="flex-1">
                 <img 
-                    src="${import.meta.env.BASE_URL}/images/projects/shock-awards/shock-awards-1.jpg"
+                    src="${BASE_URL}/images/projects/shock-awards/shock-awards-1.jpg"
                     alt="Figure 1 - Microphone input and gain chain" 
                     class="w-full rounded-sm" 
                 /> 
@@ -853,8 +902,9 @@ export const projects = [
         `,
 		category: ["Live Sound"],
 		image: "/umutyelbasi/images/projects/shock-awards/shock-awards-1.jpg",
-		link: "#",
+		link: `${BASE_URL}/projects/${getSlug("Shock Radio Awards 2023 - Live Sound Mix")}`,
         dates: "May 2023",
-        client: "Shock Radio (https://www.shockradio.co.uk)"
+        client: "Shock Radio",
+        clientUrl: "https://www.shockradio.co.uk"
 	},
 ];
